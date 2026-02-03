@@ -22,6 +22,18 @@
 `git remote add upstream <original_repository_url>` (Add the original repository as a remote) <br>
 `git push origin <branch_name> -f` (Force push changes to a branch) <br>
 
+### To update the fork with the upstream
+
+1. In forked repo, click Sync fork --> update branch (updates the main branch) --> from git, swtich to the target branch, then `git merge main` and resolve conflicts if any. 
+
+OR
+
+2.  checkout to main branch: `git switch main` <br>
+    fetch upstream changes: `git fetch --all --prune` <br>
+    reset the main branch of origin to the upstream: `git reset --hard upstream/main` <br>
+    now the local system has all the changes from upstream <br>
+    push the changes to your forked repo: `git push origin main --force` 
+
 ## Glossary
 
 - **HEAD**: A reference to the latest commit in the current branch. <br>
