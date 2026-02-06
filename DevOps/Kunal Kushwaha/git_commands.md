@@ -32,7 +32,12 @@ OR
     fetch upstream changes: `git fetch --all --prune` <br>
     reset the main branch of origin to the upstream: `git reset --hard upstream/main` <br>
     now the local system has all the changes from upstream <br>
-    push the changes to your forked repo: `git push origin main --force` 
+    push the changes to your forked repo: `git push origin main --force`
+
+OR
+
+3. `git pull upstream main` (pull changes from the upstream main branch to your local main branch) <br>
+   `git push origin main` (push the updated main branch to your forked repository) <br>
 
 ## Glossary
 
