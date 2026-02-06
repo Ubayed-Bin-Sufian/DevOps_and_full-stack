@@ -11,6 +11,11 @@
 `cd <directory>` (Changes the current directory to the specified directory) <br>
 `cd ..` (Moves up one directory level) <br>
 `cat <file>` (Displays the contents of a file) <br>
+`head -n <file>` (Displays the first n lines of a file) <br>
+`tail -n <file>` (Displays the last n lines of a file) <br
+`cd ../..` (Moves up two directory levels) <br>
+`command1; command2` (Executes command1 and then command2) <br>
+`command1 && command2` (Executes command2 only if command1 is successful) <br>
 
 ## Glossary 
 
