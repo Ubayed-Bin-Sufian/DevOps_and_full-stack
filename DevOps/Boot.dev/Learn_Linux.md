@@ -10,6 +10,7 @@
 `ls` (Lists files and directories in the current directory) <br>
 `cd <directory>` (Changes the current directory to the specified directory) <br>
 `cd ..` (Moves up one directory level) <br>
+`cat <file>` (Displays the contents of a file) <br>
 
 ## Glossary 
 
