@@ -16,6 +16,8 @@
 `cd ../..` (Moves up two directory levels) <br>
 `command1; command2` (Executes command1 and then command2) <br>
 `command1 && command2` (Executes command2 only if command1 is successful) <br>
+`less <file>` (Allows you to view the contents of a file one page at a time) <br>
+`less -N <file>` (Displays line numbers. Use the arrow keys to scroll line by line, Spacebar to move forward one page, 'b' to go back one page, and q to quit.) <br>
 
 ## Glossary 
 
