@@ -10,6 +10,7 @@
 `git log` (View commit history) <br>
 `git log --oneline` (View commit history in a condensed format) <br>
 `git reset <commit>` (Reset to a specific commit; NOTE: each commit is built on top of each other. We cannot remove a commit from the middle.) <br>
+`git reset --hard <commit>` (Reset to a specific commit and discard all changes) <br>
 `git stash` (Temporarily save changes that are not ready to be committed) <br>
 `git stash pop` (Reapply stashed changes) <br>
 `git stash clear` (Clear all stashed changes) <br>
@@ -38,6 +39,15 @@ OR
 
 3. `git pull upstream main` (pull changes from the upstream main branch to your local main branch) <br>
    `git push origin main` (push the updated main branch to your forked repository) <br>
+
+### Merge commits to a single commit
+
+1. `git log` (Identify the commit hash of the commits you want to merge) <br>
+2. `git rebase -i <commit_hash>^` (Start an interactive rebase from the commit before the first commit you want to merge) <br>
+3. In the interactive rebase editor, change the word "pick" to "squash" (or "s") for the commits you want to merge, leaving "pick" for the first commit. <br>
+4. Save and close the editor. Git will then combine the commits into a single commit. <br>
+5. If prompted, edit the commit message for the new combined commit, then save and close the editor. <br>
+6. Finally, push the changes to the remote repository using `git push origin <branch_name> --force` (force push the changes to update the remote branch with the new commit history). <br>
 
 ## Glossary
 
