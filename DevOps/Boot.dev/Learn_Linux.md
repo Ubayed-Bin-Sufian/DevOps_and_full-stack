@@ -20,6 +20,7 @@
 `less -N <file>` (Displays line numbers. Use the arrow keys to scroll line by line, Spacebar to move forward one page, 'b' to go back one page, and q to quit.) <br>
 `touch <file>` (Creates an empty file or updates the timestamp of an existing file) <br>
 `touch <file1> <file2> <file3>` (Creates multiple empty files) <br>
+`mkdir <directory>` (Creates a new directory) <br>
 
 ## Glossary 
 
