@@ -21,6 +21,10 @@
 `touch <file>` (Creates an empty file or updates the timestamp of an existing file) <br>
 `touch <file1> <file2> <file3>` (Creates multiple empty files) <br>
 `mkdir <directory>` (Creates a new directory) <br>
+`mv <old_file> <new_file>` (Renames a file) <br>
+`mv <file> <directory>` (Moves a file to a different directory) <br>
+`mv <file> ~` (moves from current directory to the home directory) <br>
+`mv <file> <directory>/<new_file_name>` (Moves a file to a different directory and renames it if necessary) <br>
 
 ## Glossary 
 
