@@ -25,6 +25,8 @@
 `mv <file> <directory>` (Moves a file to a different directory) <br>
 `mv <file> ~` (moves from current directory to the home directory) <br>
 `mv <file> <directory>/<new_file_name>` (Moves a file to a different directory and renames it if necessary) <br>
+`rm <file>` (Deletes a file) <br>
+`rm -r <directory>` (Deletes a directory and its contents recursively) <br>
 
 ## Glossary 
 
