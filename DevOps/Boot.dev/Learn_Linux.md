@@ -27,6 +27,8 @@
 `mv <file> <directory>/<new_file_name>` (Moves a file to a different directory and renames it if necessary) <br>
 `rm <file>` (Deletes a file) <br>
 `rm -r <directory>` (Deletes a directory and its contents recursively) <br>
+`cp <source_file> <destination_file>` (Copies a file) <br>
+`cp -R <source_directory> <destination_directory>` (Copies a directory and its contents recursively; in Linux both -r and -R will work ) <br>
 
 ## Glossary 
 
