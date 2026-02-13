@@ -43,9 +43,21 @@ The 12 Factor App is a methodology for building software-as-a-service applicatio
 2. **No Sticky Sessions:** Avoid "sticky sessions" (tying a user to one specific server). Store session data in a shared "backing service" like Redis or a database so any running process can pick up where the last one left off.
 3. **Build-Time Preparation:** Don't generate or cache permanent files (like compressed CSS/JS) while the app is running. Handle those tasks during the **Build Stage** so the running process stays lean and stateless.
 
+## 7. Port Binding: Export services via port binding.
+
+1. **Self-Contained Services:** Your app shouldn't need an external web server "injector" to run. It should be totally self-contained, using a library (like Express for Node, Flask for Python, , or **FrankenPHP/PHP-FPM** for PHP) to listen on a specific port (e.g., `:8080`) all by itself.
+2. **Unified Interface:** By binding to a port, your app presents a simple "contract" to the world. Whether it's a web service, a database, or a chat server, the way to talk to it is always the same: a Hostname and a Port.
+3. **Apps as Backing Services:** Because your app exports itself via a port, it can easily become a "Backing Service" for another app. One app just needs the URL and Port of the other to start communicating, making microservices possible.
+
 ## 8. Concurrency: Scale out via the process model.
 
 1. **Divide and Conquer:** Break the app into different **process types** (e.g., `web` for HTTP, `worker` for background tasks). This allows you to scale specific parts of the app independently based on demand.
 2. **Scale Horizontally:** Instead of making one process bigger (vertical scaling), add more identical processes across multiple machines (horizontal scaling). This works because processes are "share-nothing" and partitioned.
 3. Your application shouldn't try to manage its own health or "background" itself (daemonizing). Instead, you rely on a Process Manager (like Docker, Kubernetes, or systemd). If a process crashes, the manager restarts it; if you need to scale, the manager spins up new ones. Your app's only job is to run in the foreground and do its work. **The Golden Rule for DevOps:**
 Run your app in the foreground. Let the system (Kubernetes/Docker) put it in the background for you.
+
+## 9. Disposability: Maximize robustness with fast startup and graceful shutdown.
+
+1. **Fast Startup:** Processes should be ready to work in seconds. Quick boot times make "Elastic Scaling" (adding more servers during a traffic spike) actually work and help the system recover instantly if a process crashes.
+2. **Graceful Shutdown (SIGTERM):** When told to stop, a web process should finish the current request before exiting, and a worker process should put its current task back on the queue. This ensures no data is lost and no users get a "404 Error" mid-request.
+3. **Crash-Only Design:** Build the app to handle "sudden death" (like a power failure). By using idempotent operations (tasks that can be safely repeated), your app can recover from a hard crash just as easily as a clean shutdown.
