@@ -61,3 +61,26 @@ Run your app in the foreground. Let the system (Kubernetes/Docker) put it in the
 1. **Fast Startup:** Processes should be ready to work in seconds. Quick boot times make "Elastic Scaling" (adding more servers during a traffic spike) actually work and help the system recover instantly if a process crashes.
 2. **Graceful Shutdown (SIGTERM):** When told to stop, a web process should finish the current request before exiting, and a worker process should put its current task back on the queue. This ensures no data is lost and no users get a "404 Error" mid-request.
 3. **Crash-Only Design:** Build the app to handle "sudden death" (like a power failure). By using idempotent operations (tasks that can be safely repeated), your app can recover from a hard crash just as easily as a clean shutdown.
+
+## 10. Dev/Prod Parity: Keep development, staging, and production as similar as possible.
+
+1. **Shrink the Gaps:** Minimize the difference in **Time** (deploy in hours, not weeks), **People** (developers help monitor their own code in prod), and **Tools** (use the same OS and software versions everywhere).
+2. **Mirror Your Backing Services:** Never use "lightweight" alternatives locally (like SQLite) if you use a "heavy" service in production (like PostgreSQL). Even with "adapters," tiny differences in how they handle data will eventually cause a production crash.
+3. **Modern Parity with Containers:** Use tools like **Docker** to ensure the exact same versions of databases, caches, and queues run on your laptop as they do in the cloud. If production uses Redis 7.0, your local dev environment should use Redis 7.0.
+
+## 11. Logs: Treat logs as event streams.
+
+1. **App Just Prints to `stdout`:** The application should never worry about saving, naming, or rotating log files. It simply prints everything to the standard output (`stdout`). This keeps the app simple and "unaware" of where the logs eventually go.
+2. **Environment Handles Routing:** The execution environment (like Kubernetes, Docker, or a Log Router) is responsible for catching that output. It collects the logs from all processes and sends them to a central place like ELK (Elasticsearch, Logstash, Kibana), Splunk, fluentd or Datadog.
+3. **Logs as Big Data:** By treating logs as a continuous stream rather than a static file, you can perform powerful real-time analysis: searching for past errors, graphing traffic trends, and setting up automated alerts when things go wrong.
+
+## 12. Admin Processes: Run admin/management tasks as one-off processes.
+
+1. **Identical Environments:** Admin tasks (like database migrations or one-time scripts) must run in the exact same environment as your web processes. They must use the same code version, same configuration, and same dependency isolation (like Docker or Virtualenv).
+2. **Ship Admin Code with App Code:** Never keep your migration scripts or "fix-it" tools in a separate place. They should be part of the same codebase and packaged into the same **Release** to prevent synchronization issues between the app and the database.
+3. **Leverage the REPL/Shell:** Favor languages and frameworks that allow you to run an interactive shell (like `php artisan tinker` or `python manage.py shell`) against the live production environment safely to inspect data or debug issues without changing the code.
+
+# References
+
+- [12 Factor App Principles](https://12factor.net/)
+- https://notes.kodekloud.com/docs/12-Factor-App/Introduction/Introduction/page
