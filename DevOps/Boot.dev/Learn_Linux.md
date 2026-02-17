@@ -31,6 +31,11 @@
 `rm -r <directory>` (Deletes a directory and its contents recursively) <br>
 `cp <source_file> <destination_file>` (Copies a file) <br>
 `cp -R <source_directory> <destination_directory>` (Copies a directory and its contents recursively; in Linux both -r and -R will work) <br>
+`grep <pattern> <file>` (Searches for a specific pattern in a file and displays the matching lines; global regular expression print ) <br>
+
+## Tips and Tricks
+
+- Use `Tab` for auto-completion of commands and file names.
 
 ## Glossary 
 
