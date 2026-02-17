@@ -8,8 +8,10 @@
 `clear` & `Ctrl + L` (Clears the terminal screen) <br>
 `pwd` (Prints the current working directory; pwd: print working directory) <br>
 `ls` (Lists files and directories in the current directory) <br>
+`ls /` (Lists files and directories in the root directory) <br>
 `cd <directory>` (Changes the current directory to the specified directory) <br>
 `cd ..` (Moves up one directory level) <br>
+`cd ~` (Moves to the home directory) <br>
 `cat <file>` (Displays the contents of a file) <br>
 `head -n <file>` (Displays the first n lines of a file) <br>
 `tail -n <file>` (Displays the last n lines of a file) <br
