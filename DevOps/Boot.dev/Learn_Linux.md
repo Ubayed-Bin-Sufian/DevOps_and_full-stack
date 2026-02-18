@@ -32,6 +32,9 @@
 `cp <source_file> <destination_file>` (Copies a file) <br>
 `cp -R <source_directory> <destination_directory>` (Copies a directory and its contents recursively; in Linux both -r and -R will work) <br>
 `grep <pattern> <file>` (Searches for a specific pattern in a file and displays the matching lines; global regular expression print ) <br>
+`grep <pattern> <file1> <file2>` (Searches for a specific pattern in multiple files and displays the matching lines) <br>
+`grep -r <pattern> .` (Searches for a specific pattern in all files within the current directory and its subdirectories recursively) <br>
+`grep -r <pattern> /path/to/directory` (Searches for a specific pattern in all files within the specified directory and its subdirectories recursively) <br>
 
 ## Tips and Tricks
 
