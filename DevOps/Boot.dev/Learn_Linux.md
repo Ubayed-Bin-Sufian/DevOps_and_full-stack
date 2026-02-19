@@ -36,8 +36,8 @@
 `grep -r <pattern> .` (Searches for a specific pattern in all files within the current directory and its subdirectories recursively) <br>
 `grep -r <pattern> /path/to/directory` (Searches for a specific pattern in all files within the specified directory and its subdirectories recursively) <br>
 `find <directory> -name <file_name>` (Searches for a specific file name within the specified directory and its subdirectories) <br>
-`find <directory> -name <pattern>` (Searches for files and directories that match a specific pattern eg: files ending with .txt within the specified directory and its subdirectories) <br>
-`find <directory> -name <*pattern*>` (Searches for files and directories that match a specific pattern with wildcards within the specified directory and its subdirectories) <br>
+`find <directory> -name <"pattern">` (Searches for files and directories that match a specific pattern eg: files ending with .txt within the specified directory and its subdirectories) <br>
+`find <directory> -name <"*pattern*">` (Searches for files and directories that match a specific pattern with wildcards within the specified directory and its subdirectories) <br>
 
 ## Tips and Tricks
 
