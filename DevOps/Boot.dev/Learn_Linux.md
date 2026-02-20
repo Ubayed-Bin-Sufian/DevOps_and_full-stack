@@ -3,7 +3,9 @@
 ## Basic commands
 
 `echo "Hello World"` (Outputs Hello World) <br>
+`sudo` (Allows you to run commands with superuser privileges; sudo: superuser do) <br>
 `whoami` (Displays the current user) <br>
+`sudo whoami` (Displays the current user with superuser privileges) <br>
 `history` (Shows command history) <br>
 `clear` & `Ctrl + L` (Clears the terminal screen) <br>
 `pwd` (Prints the current working directory; pwd: print working directory) <br>
