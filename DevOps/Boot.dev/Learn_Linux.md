@@ -54,6 +54,20 @@ The first one just tells you whether you're looking at a file or a directory:
 
 The next 9 characters are broken up into 3 sets of rwx and represent the permissions themselves for the "owner", "group", and "others", in order. 
 
+- r: read permission (allows you to read the contents of the file or list (`ls`) the contents of a directory)
+- w: write permission (allows you to modify the contents of the file or add/remove files in a directory)
+- x: execute permission (allows you to run the file as a program or access a directory and its contents (`cd` into it))
+- The first 3 characters are **"owner"** permissions. The "owner" is usually just the user who created the file or directory, but it can be manually changed.
+- The next 3 characters are **"group"** permissions. A "group" is a collection of users that can be assigned permissions to files and directories. A user can belong to multiple groups, and a file or directory can have permissions assigned to multiple groups.
+- The last 3 characters are **"others"** permissions. "Others" refers to all users who are not the owner and do not belong to the group associated with the file or directory
+
+Here are some full examples:
+
+- `rwxrwxrwx`: A file where everyone can do everything
+- `rwxr-xr-x`: A file where everyone can read and execute, but only the owner can write
+- `drwxr-xr-x`: A directory where everyone can read (ls the contents) and execute (cd into it), but only the owner can write (modify the contents)
+- `drwx------`: A directory where only the owner can read, write and execute
+
 ## Tips and Tricks
 
 - Use `Tab` for auto-completion of commands and file names.
