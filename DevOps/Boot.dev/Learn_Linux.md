@@ -41,6 +41,19 @@
 `find <directory> -name <"pattern">` (Searches for files and directories that match a specific pattern eg: files ending with .txt within the specified directory and its subdirectories) <br>
 `find <directory> -name <"*pattern*">` (Searches for files and directories that match a specific pattern with wildcards within the specified directory and its subdirectories) <br>
 
+### Permissions
+
+The permissions of an individual file or directory are visually represented as a 10-character string:
+```
+drwxrwxrwx
+```
+
+The first one just tells you whether you're looking at a file or a directory:
+-  -: Regular file (e.g. `-rwxrwxrwx`)
+-   d: Directory (e.g. `drwxrwxrwx`)
+
+The next 9 characters are broken up into 3 sets of rwx and represent the permissions themselves for the "owner", "group", and "others", in order. 
+
 ## Tips and Tricks
 
 - Use `Tab` for auto-completion of commands and file names.
