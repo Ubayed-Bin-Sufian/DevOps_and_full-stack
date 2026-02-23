@@ -11,6 +11,7 @@
 `pwd` (Prints the current working directory; pwd: print working directory) <br>
 `ls` (Lists files and directories in the current directory) <br>
 `ls /` (Lists files and directories in the root directory) <br>
+`ls -l` (Lists files and directories in long format, showing permissions, ownership, size, and modification date) <br>
 `cd <directory>` (Changes the current directory to the specified directory) <br>
 `cd ..` (Moves up one directory level) <br>
 `cd ~` (Moves to the home directory) <br>
@@ -40,6 +41,7 @@
 `find <directory> -name <file_name>` (Searches for a specific file name within the specified directory and its subdirectories) <br>
 `find <directory> -name <"pattern">` (Searches for files and directories that match a specific pattern eg: files ending with .txt within the specified directory and its subdirectories) <br>
 `find <directory> -name <"*pattern*">` (Searches for files and directories that match a specific pattern with wildcards within the specified directory and its subdirectories) <br>
+`chmod -R <permissions> <directory>` (Changes the permissions of a directory and all its contents recursively; [chmod](https://www.ibm.com/docs/en/aix/7.3.0?topic=c-chmod-command): change mode) <br>
 
 ### Permissions
 
