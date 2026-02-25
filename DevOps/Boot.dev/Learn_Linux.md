@@ -73,6 +73,7 @@ Here are some full examples:
 ## Tips and Tricks
 
 - Use `Tab` for auto-completion of commands and file names.
+- To run a shell script, you can use `./script.sh` if the script is in the current directory and has execute permissions.
 
 ## Glossary 
 
@@ -87,4 +88,5 @@ Here are some full examples:
 - **relative path**: A file or directory path that is specified in relation to the current working directory.
 - **absolute path**: A complete file or directory path that starts from the root directory and specifies the full location of a file or directory.
 - **executable**: A file that can be run as a program or script.
+- **shell script**: A text file containing a series of commands that can be executed by the shell. extensions: .sh, .bash, .zsh, etc.
 - **root user**: The superuser account in a Unix-like operating system that has full administrative privileges and can perform any action on the system.
