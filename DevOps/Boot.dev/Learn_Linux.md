@@ -87,3 +87,4 @@ Here are some full examples:
 - **relative path**: A file or directory path that is specified in relation to the current working directory.
 - **absolute path**: A complete file or directory path that starts from the root directory and specifies the full location of a file or directory.
 - **executable**: A file that can be run as a program or script.
+- **root user**: The superuser account in a Unix-like operating system that has full administrative privileges and can perform any action on the system.
