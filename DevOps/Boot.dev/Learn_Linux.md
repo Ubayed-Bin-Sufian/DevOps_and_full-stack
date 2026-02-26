@@ -74,6 +74,7 @@ Here are some full examples:
 
 - Use `Tab` for auto-completion of commands and file names.
 - To run a shell script, you can use `./script.sh` if the script is in the current directory and has execute permissions.
+- Some modern systems prevent you from deleting everything by mistake with `rm -rf /` by making it a protected command. However, you can still force it with `rm -rf --no-preserve-root /`, so be very careful when using `rm -rf` and always double-check the path you're deleting.
 
 ## Glossary 
 
