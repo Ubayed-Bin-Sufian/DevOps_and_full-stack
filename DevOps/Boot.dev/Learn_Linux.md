@@ -3,7 +3,7 @@
 ## Basic commands
 
 `echo "Hello World"` (Outputs Hello World) <br>
-`sudo` (Allows you to run commands with superuser privileges; sudo: superuser do) <br>
+`sudo` (Allows you to run commands with superuser privileges; sudo: superuser do. It is used when the user is not the owner of the file or dir.) <br>
 `whoami` (Displays the current user) <br>
 `sudo whoami` (Displays the current user with superuser privileges) <br>
 `history` (Shows command history) <br>
@@ -42,6 +42,7 @@
 `find <directory> -name <"pattern">` (Searches for files and directories that match a specific pattern eg: files ending with .txt within the specified directory and its subdirectories) <br>
 `find <directory> -name <"*pattern*">` (Searches for files and directories that match a specific pattern with wildcards within the specified directory and its subdirectories) <br>
 `chmod -R <permissions> <directory>` (Changes the permissions of a directory and all its contents recursively; [chmod](https://www.ibm.com/docs/en/aix/7.3.0?topic=c-chmod-command): change mode) <br>
+`sudo chown -R <user>:<group> <directory>` (Changes the ownership of a directory and all its contents recursively; [chown](https://www.ibm.com/docs/en/aix/7.3.0?topic=c-chown-command): change owner) <br> 
 
 ### Permissions
 
