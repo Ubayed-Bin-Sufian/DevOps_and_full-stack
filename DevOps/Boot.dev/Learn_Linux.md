@@ -43,6 +43,7 @@
 `find <directory> -name <"*pattern*">` (Searches for files and directories that match a specific pattern with wildcards within the specified directory and its subdirectories) <br>
 `chmod -R <permissions> <directory>` (Changes the permissions of a directory and all its contents recursively; [chmod](https://www.ibm.com/docs/en/aix/7.3.0?topic=c-chmod-command): change mode) <br>
 `sudo chown -R <user>:<group> <directory>` (Changes the ownership of a directory and all its contents recursively; [chown](https://www.ibm.com/docs/en/aix/7.3.0?topic=c-chown-command): change owner) <br> 
+`which <command>` (Shows the full path of a command) <br>
 
 ### Permissions
 
@@ -71,11 +72,14 @@ Here are some full examples:
 - `drwxr-xr-x`: A directory where everyone can read (ls the contents) and execute (cd into it), but only the owner can write (modify the contents)
 - `drwx------`: A directory where only the owner can read, write and execute
 
+
 ## Tips and Tricks
 
 - Use `Tab` for auto-completion of commands and file names.
 - To run a shell script, you can use `./script.sh` if the script is in the current directory and has execute permissions.
 - Some modern systems prevent you from deleting everything by mistake with `rm -rf /` by making it a protected command. However, you can still force it with `rm -rf --no-preserve-root /`, so be very careful when using `rm -rf` and always double-check the path you're deleting.
+- `sh` program is compiled executable. On the other hand, `.sh` extension is used for shell scripts, which are interpreted and run by `sh` or another shell interpreter. 
+
 
 ## Glossary 
 
@@ -89,6 +93,9 @@ Here are some full examples:
 - **home directory**: The default directory assigned to a user for storing personal files, typically located at /home/username.
 - **relative path**: A file or directory path that is specified in relation to the current working directory.
 - **absolute path**: A complete file or directory path that starts from the root directory and specifies the full location of a file or directory.
+- **program**: A set of instructions that can be executed by a computer to perform a specific task. Programs can be written in various programming languages and can be compiled or interpreted.
+- **compiled program**: A program that has been translated from source code into machine code, which can be directly executed by the computer's hardware. Examples of programming languages that typically produce compiled programs include C, C++, Go and Rust.
+- **interpreted program**: A program that is executed line by line by an interpreter, which reads the source code and performs the specified actions without the need for a separate compilation step. Examples of programming languages that typically produce interpreted programs include Python, JavaScript, Ruby and shell scripts.
 - **executable**: A file that can be run as a program or script.
 - **shell script**: A text file containing a series of commands that can be executed by the shell. extensions: .sh, .bash, .zsh, etc.
 - **root user**: The superuser account in a Unix-like operating system that has full administrative privileges and can perform any action on the system.
