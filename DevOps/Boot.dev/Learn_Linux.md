@@ -44,6 +44,7 @@
 `chmod -R <permissions> <directory>` (Changes the permissions of a directory and all its contents recursively; [chmod](https://www.ibm.com/docs/en/aix/7.3.0?topic=c-chmod-command): change mode) <br>
 `sudo chown -R <user>:<group> <directory>` (Changes the ownership of a directory and all its contents recursively; [chown](https://www.ibm.com/docs/en/aix/7.3.0?topic=c-chown-command): change owner) <br> 
 `which <command>` (Shows the full path of a command) <br>
+`#! interpreter [optional-arg]` (Shebang line used at the beginning of a script to specify the interpreter to be used for executing the script) <br>
 
 ### Permissions
 
@@ -99,3 +100,4 @@ Here are some full examples:
 - **executable**: A file that can be run as a program or script.
 - **shell script**: A text file containing a series of commands that can be executed by the shell. extensions: .sh, .bash, .zsh, etc.
 - **root user**: The superuser account in a Unix-like operating system that has full administrative privileges and can perform any action on the system.
+- **shebang**: The first line of a script that specifies the interpreter to be used to execute the script. It starts with `#!` followed by the path to the interpreter (e.g., `#!/bin/bash`).
