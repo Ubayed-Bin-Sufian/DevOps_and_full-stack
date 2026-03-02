@@ -101,3 +101,7 @@ Here are some full examples:
 - **shell script**: A text file containing a series of commands that can be executed by the shell. extensions: .sh, .bash, .zsh, etc.
 - **root user**: The superuser account in a Unix-like operating system that has full administrative privileges and can perform any action on the system.
 - **shebang**: The first line of a script that specifies the interpreter to be used to execute the script. It starts with `#!` followed by the path to the interpreter (e.g., `#!/bin/bash`).
+- **Three types of shells:** `sh` (Bourne shell), `bash` (Bourne Again SHell), and `zsh` (Z shell). 
+  - `sh` is the original Unix shell, which is simple and widely available but lacks some features found in more modern shells.
+  - `bash` is an enhanced version of `sh` that includes additional features such as command-line editing, improved scripting capabilities, and better support for arrays and functions. It is the default shell on many Linux distributions.
+  - `zsh` is another popular shell that offers even more features and customization options than `bash`, including advanced tab completion, improved globbing, and a powerful plugin system.
