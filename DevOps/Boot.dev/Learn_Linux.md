@@ -12,6 +12,7 @@
 `ls` (Lists files and directories in the current directory) <br>
 `ls /` (Lists files and directories in the root directory) <br>
 `ls -l` (Lists files and directories in long format, showing permissions, ownership, size, and modification date) <br>
+`ls -a ~` (Lists all files and directories in the home directory, including hidden ones that start with a dot) <br>
 `cd <directory>` (Changes the current directory to the specified directory) <br>
 `cd ..` (Moves up one directory level) <br>
 `cd ~` (Moves to the home directory) <br>
@@ -79,7 +80,8 @@ Here are some full examples:
 - Use `Tab` for auto-completion of commands and file names.
 - To run a shell script, you can use `./script.sh` if the script is in the current directory and has execute permissions.
 - Some modern systems prevent you from deleting everything by mistake with `rm -rf /` by making it a protected command. However, you can still force it with `rm -rf --no-preserve-root /`, so be very careful when using `rm -rf` and always double-check the path you're deleting.
-- `sh` program is compiled executable. On the other hand, `.sh` extension is used for shell scripts, which are interpreted and run by `sh` or another shell interpreter. 
+- `sh` program is compiled executable. On the other hand, `.sh` extension is used for shell scripts, which are interpreted and run by `sh` or another shell interpreter.
+- When using nano, you can save and exit by pressing `Ctrl + O` to write the changes to the file, then `Enter` to confirm the file name, and finally `Ctrl + X` to exit the editor.
 
 
 ## Glossary 
@@ -105,3 +107,4 @@ Here are some full examples:
   - `sh` is the original Unix shell, which is simple and widely available but lacks some features found in more modern shells.
   - `bash` is an enhanced version of `sh` that includes additional features such as command-line editing, improved scripting capabilities, and better support for arrays and functions. It is the default shell on many Linux distributions.
   - `zsh` is another popular shell that offers even more features and customization options than `bash`, including advanced tab completion, improved globbing, and a powerful plugin system.
+- **configuration file**: A file used to store settings and preferences for a program or system. In the context of shells, configuration files (e.g., `.bashrc`, `.zshrc`) are used to customize the behavior of the shell, such as setting environment variables, defining aliases, and configuring the prompt.
