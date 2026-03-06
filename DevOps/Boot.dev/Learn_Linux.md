@@ -46,6 +46,8 @@
 `sudo chown -R <user>:<group> <directory>` (Changes the ownership of a directory and all its contents recursively; [chown](https://www.ibm.com/docs/en/aix/7.3.0?topic=c-chown-command): change owner) <br> 
 `which <command>` (Shows the full path of a command) <br>
 `#! interpreter [optional-arg]` (Shebang line used at the beginning of a script to specify the interpreter to be used for executing the script) <br>
+`env` (Displays the current environment variables) <br>
+`export <VAR_NAME>=<value>` (Sets an environment variable) <br>
 
 ### Permissions
 
