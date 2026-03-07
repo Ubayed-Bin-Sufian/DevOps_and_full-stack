@@ -49,6 +49,7 @@
 `#! interpreter [optional-arg]` (Shebang line used at the beginning of a script to specify the interpreter to be used for executing the script) <br>
 `env` (Displays the current environment variables) <br>
 `export <VAR_NAME>=<value>` (Sets an environment variable) <br>
+`export PATH="$PATH:/path/to/new"` (Adds a new directory to the PATH environment variable where `$PATH` part is a reference to the existing `PATH` variable, `:` separates the existing directories from the new directory that we are adding, and `/path/to/new` is the new directory to add) <br>
 
 ### Permissions
 
