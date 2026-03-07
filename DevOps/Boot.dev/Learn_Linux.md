@@ -3,6 +3,7 @@
 ## Basic commands
 
 `echo "Hello World"` (Outputs Hello World) <br>
+`echo $PATH` (Displays the value of the PATH environment variable, which is a list of directories that the shell searches for executable files) <br>
 `sudo` (Allows you to run commands with superuser privileges; sudo: superuser do. It is used when the user is not the owner of the file or dir.) <br>
 `whoami` (Displays the current user) <br>
 `sudo whoami` (Displays the current user with superuser privileges) <br>
