@@ -19,7 +19,7 @@
 `cd ~` (Moves to the home directory) <br>
 `cat <file>` (Displays the contents of a file) <br>
 `head -n <file>` (Displays the first n lines of a file) <br>
-`tail -n <file>` (Displays the last n lines of a file) <br
+`tail -n <file>` (Displays the last n lines of a file) <br>
 `cd ../..` (Moves up two directory levels) <br>
 `command1; command2` (Executes command1 and then command2) <br>
 `command1 && command2` (Executes command2 only if command1 is successful) <br>
@@ -49,7 +49,7 @@
 `#! interpreter [optional-arg]` (Shebang line used at the beginning of a script to specify the interpreter to be used for executing the script) <br>
 `env` (Displays the current environment variables) <br>
 `export <VAR_NAME>=<value>` (Sets an environment variable) <br>
-`export PATH="$PATH:/path/to/new"` (Adds a new directory to the PATH environment variable where `$PATH` part is a reference to the existing `PATH` variable, `:` separates the existing directories from the new directory that we are adding, and `/path/to/new` is the new directory to add) <br>
+`export PATH="$PATH:/path/to/new"` (Adds a new directory to the PATH environment variable where `$PATH` part is a reference to the existing `PATH` variable, `:` separates the existing directories from the new directory that we are adding, and `/path/to/new` is the new directory to add) **NOTE:** This works for the current terminal session, but if you want to make it permanent, you need to add it to your shell's configuration file (e.g., `~/.bashrc` or `~/.zshrc`) <br>
 
 ### Permissions
 
