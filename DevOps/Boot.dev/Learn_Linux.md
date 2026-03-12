@@ -51,7 +51,7 @@
 `export <VAR_NAME>=<value>` (Sets an environment variable) <br>
 `export PATH="$PATH:/path/to/new"` (Adds a new directory to the PATH environment variable where `$PATH` part is a reference to the existing `PATH` variable, `:` separates the existing directories from the new directory that we are adding, and `/path/to/new` is the new directory to add) **NOTE:** This works for the current terminal session, but if you want to make it permanent, you need to add it to your shell's configuration file (e.g., `~/.bashrc` or `~/.zshrc`) <br>
 `man <command>` (Displays the manual page for a command, providing detailed information about its usage, options, and examples) <br>
-`man ls` (Displays the manual page for the `ls` command) <br>
+`man ls` (Displays the manual page for the `ls` command) **NOTE:** You can search for specific keywords within the manual page by pressing `/` followed by the keyword and pressing `Enter`. Use `n` to go to the next occurrence and `N` to go to the previous occurrence. Press `q` to exit the manual page. <br> 
 
 ### Permissions
 
