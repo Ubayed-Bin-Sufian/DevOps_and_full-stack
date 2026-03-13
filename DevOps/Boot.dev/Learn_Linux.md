@@ -50,8 +50,9 @@
 `env` (Displays the current environment variables) <br>
 `export <VAR_NAME>=<value>` (Sets an environment variable) <br>
 `export PATH="$PATH:/path/to/new"` (Adds a new directory to the PATH environment variable where `$PATH` part is a reference to the existing `PATH` variable, `:` separates the existing directories from the new directory that we are adding, and `/path/to/new` is the new directory to add) **NOTE:** This works for the current terminal session, but if you want to make it permanent, you need to add it to your shell's configuration file (e.g., `~/.bashrc` or `~/.zshrc`) <br>
-`man <command>` (Displays the manual page for a command, providing detailed information about its usage, options, and examples) <br>
-`man ls` (Displays the manual page for the `ls` command) **NOTE:** You can search for specific keywords within the manual page by pressing `/` followed by the keyword and pressing `Enter`. Use `n` to go to the next occurrence and `N` to go to the previous occurrence. Press `q` to exit the manual page. <br> 
+`man <command>` (Displays the manual page for a command, providing detailed information about its usage, options, and examples; reference: [man](https://www.ibm.com/docs/en/aix/7.3.0?topic=m-man-command)) <br>
+`man ls` (Displays the manual page for the `ls` command) **NOTE:** You can search for specific keywords within the manual page by pressing `/` followed by the keyword and pressing `Enter`. Use `n` to go to the next occurrence and `N` to go to the previous occurrence. Press `q` to exit the manual page. <br>
+`wc <file>` (Counts the number of lines, words, and characters in a file; word count) <br>
 
 ### Permissions
 
@@ -114,3 +115,4 @@ Here are some full examples:
   - `bash` is an enhanced version of `sh` that includes additional features such as command-line editing, improved scripting capabilities, and better support for arrays and functions. It is the default shell on many Linux distributions.
   - `zsh` is another popular shell that offers even more features and customization options than `bash`, including advanced tab completion, improved globbing, and a powerful plugin system.
 - **configuration file**: A file used to store settings and preferences for a program or system. In the context of shells, configuration files (e.g., `.bashrc`, `.zshrc`) are used to customize the behavior of the shell, such as setting environment variables, defining aliases, and configuring the prompt.
+- **flags**: Options that can be added to commands to modify their behavior. Flags are typically preceded by a hyphen (-) for single-letter flags (e.g., `-l`) or two hyphens (--) for longer, more descriptive flags (e.g., `--recursive`). Reference: [flags](https://www.ibm.com/docs/en/aix/7.3.0?topic=names-command-flags)
