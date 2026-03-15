@@ -53,6 +53,7 @@
 `man <command>` (Displays the manual page for a command, providing detailed information about its usage, options, and examples; reference: [man](https://www.ibm.com/docs/en/aix/7.3.0?topic=m-man-command)) <br>
 `man ls` (Displays the manual page for the `ls` command) **NOTE:** You can search for specific keywords within the manual page by pressing `/` followed by the keyword and pressing `Enter`. Use `n` to go to the next occurrence and `N` to go to the previous occurrence. Press `q` to exit the manual page. <br>
 `wc <file>` (Counts the number of lines, words, and characters in a file; word count) <br>
+`--help / -h` (Displays a brief help message for a command, showing its usage and available options) <br>
 
 ### Permissions
 
@@ -116,4 +117,5 @@ Here are some full examples:
   - `zsh` is another popular shell that offers even more features and customization options than `bash`, including advanced tab completion, improved globbing, and a powerful plugin system.
 - **configuration file**: A file used to store settings and preferences for a program or system. In the context of shells, configuration files (e.g., `.bashrc`, `.zshrc`) are used to customize the behavior of the shell, such as setting environment variables, defining aliases, and configuring the prompt.
 - **flags**: Options that can be added to commands to modify their behavior. Flags are typically preceded by a hyphen (-) for single-letter flags (e.g., `-l`) or two hyphens (--) for longer, more descriptive flags (e.g., `--recursive`). Reference: [flags](https://www.ibm.com/docs/en/aix/7.3.0?topic=names-command-flags)
-- **positional arguments**: Arguments that are passed to a command in a specific order. The meaning of each argument is determined by its position in the command. For example, in the command `cp source_file destination_file`, `source_file` is the first positional argument and `destination_file` is the second positional argument. The `cd` command takes a single positional argument that specifies the directory to change to. Other commands, like `ls`, can take multiple positional arguments (e.g., `ls dir1 dir2`) to specify multiple directories to list. 
+- **positional arguments**: Arguments that are passed to a command in a specific order. The meaning of each argument is determined by its position in the command. For example, in the command `cp source_file destination_file`, `source_file` is the first positional argument and `destination_file` is the second positional argument. The `cd` command takes a single positional argument that specifies the directory to change to. Other commands, like `ls`, can take multiple positional arguments (e.g., `ls dir1 dir2`) to specify multiple directories to list.
+- **curl**: A command-line tool used to transfer data from or to a server, supporting various protocols such as HTTP, HTTPS, FTP, and more. It is commonly used for making HTTP requests and downloading files from the internet.
