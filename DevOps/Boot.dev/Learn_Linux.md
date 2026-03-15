@@ -4,6 +4,7 @@
 
 `echo "Hello World"` (Outputs Hello World) <br>
 `echo $PATH` (Displays the value of the PATH environment variable, which is a list of directories that the shell searches for executable files) <br>
+`echo $?` (Displays the exit status of the last executed command) <br>
 `sudo` (Allows you to run commands with superuser privileges; sudo: superuser do. It is used when the user is not the owner of the file or dir.) <br>
 `whoami` (Displays the current user) <br>
 `sudo whoami` (Displays the current user with superuser privileges) <br>
@@ -49,6 +50,7 @@
 `#! interpreter [optional-arg]` (Shebang line used at the beginning of a script to specify the interpreter to be used for executing the script) <br>
 `env` (Displays the current environment variables) <br>
 `export <VAR_NAME>=<value>` (Sets an environment variable) <br>
+`unset <VAR_NAME>` (Unsets an environment variable) or `export <VAR_NAME>=""` <br>
 `export PATH="$PATH:/path/to/new"` (Adds a new directory to the PATH environment variable where `$PATH` part is a reference to the existing `PATH` variable, `:` separates the existing directories from the new directory that we are adding, and `/path/to/new` is the new directory to add) **NOTE:** This works for the current terminal session, but if you want to make it permanent, you need to add it to your shell's configuration file (e.g., `~/.bashrc` or `~/.zshrc`) <br>
 `man <command>` (Displays the manual page for a command, providing detailed information about its usage, options, and examples; reference: [man](https://www.ibm.com/docs/en/aix/7.3.0?topic=m-man-command)) <br>
 `man ls` (Displays the manual page for the `ls` command) **NOTE:** You can search for specific keywords within the manual page by pressing `/` followed by the keyword and pressing `Enter`. Use `n` to go to the next occurrence and `N` to go to the previous occurrence. Press `q` to exit the manual page. <br>
@@ -119,3 +121,4 @@ Here are some full examples:
 - **flags**: Options that can be added to commands to modify their behavior. Flags are typically preceded by a hyphen (-) for single-letter flags (e.g., `-l`) or two hyphens (--) for longer, more descriptive flags (e.g., `--recursive`). Reference: [flags](https://www.ibm.com/docs/en/aix/7.3.0?topic=names-command-flags)
 - **positional arguments**: Arguments that are passed to a command in a specific order. The meaning of each argument is determined by its position in the command. For example, in the command `cp source_file destination_file`, `source_file` is the first positional argument and `destination_file` is the second positional argument. The `cd` command takes a single positional argument that specifies the directory to change to. Other commands, like `ls`, can take multiple positional arguments (e.g., `ls dir1 dir2`) to specify multiple directories to list.
 - **curl**: A command-line tool used to transfer data from or to a server, supporting various protocols such as HTTP, HTTPS, FTP, and more. It is commonly used for making HTTP requests and downloading files from the internet.
+- **exit status**: A numerical value returned by a command or program upon completion, indicating whether it executed successfully or encountered an error. An exit status of 0 typically indicates success, while a non-zero exit status indicates an error or failure. You can check the exit status of the last executed command using the special variable `$?` in the shell. Also called "exit value" or "exit code". 
