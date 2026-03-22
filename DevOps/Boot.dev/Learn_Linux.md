@@ -93,6 +93,7 @@ Here are some full examples:
 - Some modern systems prevent you from deleting everything by mistake with `rm -rf /` by making it a protected command. However, you can still force it with `rm -rf --no-preserve-root /`, so be very careful when using `rm -rf` and always double-check the path you're deleting.
 - `sh` program is compiled executable. On the other hand, `.sh` extension is used for shell scripts, which are interpreted and run by `sh` or another shell interpreter.
 - When using nano, you can save and exit by pressing `Ctrl + O` to write the changes to the file, then `Enter` to confirm the file name, and finally `Ctrl + X` to exit the editor.
+- `Ctrl + C` is used to interrupt a running command or process in the terminal. This sends a "SIGINT (signal interrupt)" to the process, which typically causes it to terminate.
 
 
 ## Glossary 
