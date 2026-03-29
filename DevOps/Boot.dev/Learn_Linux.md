@@ -57,6 +57,10 @@
 `man ls` (Displays the manual page for the `ls` command) **NOTE:** You can search for specific keywords within the manual page by pressing `/` followed by the keyword and pressing `Enter`. Use `n` to go to the next occurrence and `N` to go to the previous occurrence. Press `q` to exit the manual page. <br>
 `wc <file>` (Counts the number of lines, words, and characters in a file; word count) <br>
 `--help / -h` (Displays a brief help message for a command, showing its usage and available options) <br>
+`kill <PID>` (Terminates a process with the specified Process ID; reference: [kill](https://www.ibm.com/docs/en/aix/7.3.0?topic=k-kill-command)) <br>
+`ps aux` (Displays a detailed list of all running processes, including their Process IDs, resource usage, and other information; ps: process status, a: all users, u: user-oriented format, x: processes without a terminal; reference: [ps command](https://www.ibm.com/docs/en/zos/3.2.0?topic=jobs-using-ps-command)) <br>
+`ps aux | grep <process_name>` (Filters the list of running processes to show only those that match the specified process name) <br>
+`ps aux | head -n 5` (Displays only the first 5 lines of the list of running processes) <br>
 
 ### Permissions
 
