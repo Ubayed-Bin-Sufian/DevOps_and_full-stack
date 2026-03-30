@@ -90,6 +90,15 @@ Here are some full examples:
 - `drwx------`: A directory where only the owner can read, write and execute
 
 
+### Unix Philosophy
+
+The Unix Philosophy is a simple set of principles that have guided the development of Unix-like operating systems for decades. It can be summarized as:
+
+1. Write programs that do one thing and do it well. eg: `ls` is a program that lists files and directories, while `grep` is a program that searches for patterns in text. 
+2. Write programs to work together.Eg: You can use pipes (`|`) to connect the output of one program to the input of another program, allowing you to create powerful command combinations. For example, `ls -l | grep "Jan"` lists files in long format and then filters the output to show only lines containing "Jan".
+3. Write programs to handle text streams, because that is a universal interface.
+
+
 ## Tips and Tricks
 
 - Use `Tab` for auto-completion of commands and file names.
@@ -132,3 +141,4 @@ Here are some full examples:
 - **standard error (stderr)**: The default destination for error messages from a command or program, which is also typically the terminal or console. Standard error can be redirected to a file or another command using the `2>` operator. Eg: `command > output.txt 2> error.txt` (redirects standard output to `output.txt` and standard error to `error.txt`). Real life example: `./process_transactions.sh ../transactions/2020.csv 2> /tmp/worldbanc.log` (runs the `process_transactions.sh` script with the specified CSV file as an argument and redirects any error messages to a log file in the `/tmp` directory).
 - **standard input (stdin)**: The default source of input for a command or program, which is typically the keyboard. Standard input can be redirected from a file or another command using the `<` operator. Eg: `command < input.txt` (redirects standard input from `input.txt`).
 - **pipe**: A mechanism for connecting the output of one command to the input of another command, allowing you to chain commands together. The pipe operator is represented by the vertical bar (`|`). For example, `ls -l | grep "Jan"` (lists files in long format and then filters the output to show only lines containing "Jan").
+- **text stream**: A sequence of characters that can be processed by commands and programs. In the context of the Unix Philosophy, programs are designed to handle text streams, which allows for greater flexibility and interoperability between different commands and programs.
