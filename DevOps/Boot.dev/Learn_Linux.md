@@ -61,6 +61,7 @@
 `ps aux` (Displays a detailed list of all running processes, including their Process IDs, resource usage, and other information; ps: process status, a: all users, u: user-oriented format, x: processes without a terminal; reference: [ps command](https://www.ibm.com/docs/en/zos/3.2.0?topic=jobs-using-ps-command)) <br>
 `ps aux | grep <process_name>` (Filters the list of running processes to show only those that match the specified process name) <br>
 `ps aux | head -n 5` (Displays only the first 5 lines of the list of running processes) <br>
+`top` (Displays a real-time, dynamic view of the system's resource usage, including CPU and memory usage, as well as a list of running processes; reference: [top command](https://man7.org/linux/man-pages/man1/top.1.html)) Press M to sort by memory usage <br>
 
 ### Permissions
 
