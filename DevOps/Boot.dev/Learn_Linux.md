@@ -146,3 +146,8 @@ The Unix Philosophy is a simple set of principles that have guided the developme
 - **text stream**: A sequence of characters that can be processed by commands and programs. In the context of the Unix Philosophy, programs are designed to handle text streams, which allows for greater flexibility and interoperability between different commands and programs.
 - **package manager**: A tool that automates the process of installing, updating, and managing software packages on a system. Examples include `apt` for Debian-based systems, `yum` for Red Hat-based systems, and `brew` for macOS.
   - **webi**: A package manager that lets you install command line tools directly from the web. It is designed to be simple and easy to use, allowing you to quickly install and manage command line tools without needing to worry about dependencies or complex installation processes. You can find more information about webi at [webi](https://webinstall.dev/).
+
+## References
+
+- https://www.boot.dev/courses/learn-linux
+- https://www.youtube.com/watch?v=v392lEyM29A&t=684s
