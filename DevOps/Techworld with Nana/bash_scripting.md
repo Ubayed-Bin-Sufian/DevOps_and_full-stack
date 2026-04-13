@@ -33,22 +33,50 @@ Bash scripting is a powerful way to automate tasks in Unix-like operating system
 # Log Analysis Script
 
 echo "Analyzing log files..."
+echo "==============================="
+
+echo "list of log files modified in the last 24 hours:"
+find . -name "*.log" -mtime -1
+
+echo "==============================="
+
+# Error messages in application.log
+echo  "ERROR messages in application.log:"
+grep "ERROR" application.log
 
 # Count ERROR messages in application.log
 error_count=$(grep -c "ERROR" application.log)
-echo "Number of ERROR messages in application.log: $error_count"
+echo -e "\nNumber of ERROR messages in application.log: $error_count"
+
+echo "==============================="
+
+# FATAL messages in application.log
+echo  "FATAL messages in application.log:"
+grep "FATAL" application.log
 
 # Count FATAL messages in application.log
 fatal_count=$(grep -c "FATAL" application.log)
-echo "Number of FATAL messages in application.log: $fatal_count"
+echo -e "\nNumber of FATAL messages in application.log: $fatal_count"
+
+echo "==============================="
+
+# Error messages in system.log
+echo  "ERROR messages in system.log:"
+grep "ERROR" system.log
 
 # Count ERROR messages in system.log
 error_count_system=$(grep -c "ERROR" system.log)
-echo "Number of ERROR messages in system.log: $error_count_system"
+echo -e "\nNumber of ERROR messages in system.log: $error_count_system"
+
+echo "==============================="
+
+# FATAL messages in system.log
+echo "FATAL messages in system.log:"
+grep "FATAL" system.log
 
 # Count FATAL messages in system.log
 fatal_count_system=$(grep -c "FATAL" system.log)
-echo "Number of FATAL messages in system.log: $fatal_count_system"
+echo -e "\nNumber of FATAL messages in system.log: $fatal_count_system"
 ```
 
 5. Press `Esc` to exit insert mode, then type `:wq` to save and quit Vim
