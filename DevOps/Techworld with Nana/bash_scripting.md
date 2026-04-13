@@ -4,6 +4,10 @@
 
 Bash scripting is a powerful way to automate tasks in Unix-like operating systems. It allows you to write a series of commands in a file, which can then be executed as a script. This can save time and reduce the chance of errors when performing repetitive tasks.
 
+## Use of absolute path
+
+Using absolute paths in scripts ensures that the script can find the necessary files and directories regardless of the current working directory. This is especially important when running scripts from different locations. For example, instead of using `./logs/application.log`, you can use `/home/user/logs/application.log` to ensure the script always accesses the correct file.
+
 ## 1. Example of manual log analysis
 
 1. `cd logs`
@@ -36,46 +40,46 @@ echo "Analyzing log files..."
 echo "==============================="
 
 echo "list of log files modified in the last 24 hours:"
-find . -name "*.log" -mtime -1
+find /home/ubayed/logs -name "*.log" -mtime -1
 
 echo "==============================="
 
 # Error messages in application.log
 echo  "ERROR messages in application.log:"
-grep "ERROR" application.log
+grep "ERROR" /home/ubayed/logs/application.log
 
 # Count ERROR messages in application.log
-error_count=$(grep -c "ERROR" application.log)
+error_count=$(grep -c "ERROR" /home/ubayed/logs/application.log)
 echo -e "\nNumber of ERROR messages in application.log: $error_count"
 
 echo "==============================="
 
 # FATAL messages in application.log
 echo  "FATAL messages in application.log:"
-grep "FATAL" application.log
+grep "FATAL" /home/ubayed/logs/application.log
 
 # Count FATAL messages in application.log
-fatal_count=$(grep -c "FATAL" application.log)
+fatal_count=$(grep -c "FATAL" /home/ubayed/logs/application.log)
 echo -e "\nNumber of FATAL messages in application.log: $fatal_count"
 
 echo "==============================="
 
 # Error messages in system.log
 echo  "ERROR messages in system.log:"
-grep "ERROR" system.log
+grep "ERROR" /home/ubayed/logs/system.log
 
 # Count ERROR messages in system.log
-error_count_system=$(grep -c "ERROR" system.log)
+error_count_system=$(grep -c "ERROR" /home/ubayed/logs/system.log)
 echo -e "\nNumber of ERROR messages in system.log: $error_count_system"
 
 echo "==============================="
 
 # FATAL messages in system.log
 echo "FATAL messages in system.log:"
-grep "FATAL" system.log
+grep "FATAL" /home/ubayed/logs/system.log
 
 # Count FATAL messages in system.log
-fatal_count_system=$(grep -c "FATAL" system.log)
+fatal_count_system=$(grep -c "FATAL" /home/ubayed/logs/system.log)
 echo -e "\nNumber of FATAL messages in system.log: $fatal_count_system"
 ```
 
