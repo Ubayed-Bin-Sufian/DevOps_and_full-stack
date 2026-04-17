@@ -12,6 +12,10 @@ Using absolute paths in scripts ensures that the script can find the necessary f
 
 Variables in Bash scripting allow you to store and manipulate data. They can be used to make your scripts more flexible and reusable.
 
+## Use of arrays
+
+Arrays in Bash allow you to store multiple values in a single variable. This can be useful for managing lists of items, such as error keywords in log analysis.
+
 ## 1. Example of manual log analysis
 
 1. `cd logs`
@@ -44,6 +48,8 @@ LOG_DIR="/home/ubayed/logs"
 APP_LOG="$LOG_DIR/application.log"
 SYS_LOG="$LOG_DIR/system.log"
 
+ERROR_KEYWORDS=("ERROR" "FATAL" "CRITICAL")
+
 echo "Analyzing log files..."
 echo "==============================="
 
@@ -53,42 +59,62 @@ find $LOG_DIR -name "*.log" -mtime -1
 echo "==============================="
 
 # Error messages in application.log
-echo  "ERROR messages in application.log:"
-grep "ERROR" $APP_LOG
+echo "ERROR messages in application.log:"
+grep "${ERROR_KEYWORDS[0]}" $APP_LOG
 
 # Count ERROR messages in application.log
-error_count=$(grep -c "ERROR" $APP_LOG)
+error_count=$(grep -c "${ERROR_KEYWORDS[0]}" $APP_LOG)
 echo -e "\nNumber of ERROR messages in application.log: $error_count"
 
 echo "==============================="
 
 # FATAL messages in application.log
-echo  "FATAL messages in application.log:"
-grep "FATAL" $APP_LOG
+echo "FATAL messages in application.log:"
+grep "${ERROR_KEYWORDS[1]}" $APP_LOG
 
 # Count FATAL messages in application.log
-fatal_count=$(grep -c "FATAL" $APP_LOG)
+fatal_count=$(grep -c "${ERROR_KEYWORDS[1]}" $APP_LOG)
 echo -e "\nNumber of FATAL messages in application.log: $fatal_count"
 
 echo "==============================="
 
+# CRITICAL messages in application.log
+echo "CRITICAL messages in application.log:"
+grep "${ERROR_KEYWORDS[2]}" $APP_LOG
+
+# Count CRITICAL messages in application.log
+critical_count=$(grep -c "${ERROR_KEYWORDS[2]}" $APP_LOG)
+echo -e "\nNumber of CRITICAL messages in application.log: $critical_count"
+
+echo "==============================="
+
 # Error messages in system.log
-echo  "ERROR messages in system.log:"
-grep "ERROR" $SYS_LOG
+echo "ERROR messages in system.log:"
+grep "${ERROR_KEYWORDS[0]}" $SYS_LOG
 
 # Count ERROR messages in system.log
-error_count_system=$(grep -c "ERROR" $SYS_LOG)
+error_count_system=$(grep -c "${ERROR_KEYWORDS[0]}" $SYS_LOG)
 echo -e "\nNumber of ERROR messages in system.log: $error_count_system"
 
 echo "==============================="
 
 # FATAL messages in system.log
 echo "FATAL messages in system.log:"
-grep "FATAL" $SYS_LOG
+grep "${ERROR_KEYWORDS[1]}" $SYS_LOG
 
 # Count FATAL messages in system.log
-fatal_count_system=$(grep -c "FATAL" $SYS_LOG)
+fatal_count_system=$(grep -c "${ERROR_KEYWORDS[1]}" $SYS_LOG)
 echo -e "\nNumber of FATAL messages in system.log: $fatal_count_system"
+
+echo "==============================="
+
+# CRITICAL messages in system.log
+echo "CRITICAL messages in system.log:"
+grep "${ERROR_KEYWORDS[2]}" $SYS_LOG
+
+# Count CRITICAL messages in system.log
+critical_count_system=$(grep -c "${ERROR_KEYWORDS[2]}" $SYS_LOG)
+echo -e "\nNumber of CRITICAL messages in system.log: $critical_count_system"
 ```
 
 5. Press `Esc` to exit insert mode, then type `:wq` to save and quit Vim
@@ -98,6 +124,7 @@ echo -e "\nNumber of FATAL messages in system.log: $fatal_count_system"
 ### Notes
 
 1. `echo -e` allows for the interpretation of backslash escapes, enabling the use of `\n` for new lines.
+2. In bash scripting, spaces around the `=` sign in variable assignment are not allowed. For example, `error_count=$(grep -c "ERROR" $APP_LOG)` is correct, while `error_count = $(grep -c "ERROR" $APP_LOG)` will result in an error.
 
 ## References:
 
