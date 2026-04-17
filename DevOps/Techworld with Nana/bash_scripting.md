@@ -8,6 +8,10 @@ Bash scripting is a powerful way to automate tasks in Unix-like operating system
 
 Using absolute paths in scripts ensures that the script can find the necessary files and directories regardless of the current working directory. This is especially important when running scripts from different locations. For example, instead of using `./logs/application.log`, you can use `/home/user/logs/application.log` to ensure the script always accesses the correct file.
 
+## Use of variables
+
+Variables in Bash scripting allow you to store and manipulate data. They can be used to make your scripts more flexible and reusable.
+
 ## 1. Example of manual log analysis
 
 1. `cd logs`
@@ -36,56 +40,64 @@ Using absolute paths in scripts ensures that the script can find the necessary f
 
 # Log Analysis Script
 
+LOG_DIR="/home/ubayed/logs"
+APP_LOG="$LOG_DIR/application.log"
+SYS_LOG="$LOG_DIR/system.log"
+
 echo "Analyzing log files..."
 echo "==============================="
 
 echo "list of log files modified in the last 24 hours:"
-find /home/ubayed/logs -name "*.log" -mtime -1
+find $LOG_DIR -name "*.log" -mtime -1
 
 echo "==============================="
 
 # Error messages in application.log
 echo  "ERROR messages in application.log:"
-grep "ERROR" /home/ubayed/logs/application.log
+grep "ERROR" $APP_LOG
 
 # Count ERROR messages in application.log
-error_count=$(grep -c "ERROR" /home/ubayed/logs/application.log)
+error_count=$(grep -c "ERROR" $APP_LOG)
 echo -e "\nNumber of ERROR messages in application.log: $error_count"
 
 echo "==============================="
 
 # FATAL messages in application.log
 echo  "FATAL messages in application.log:"
-grep "FATAL" /home/ubayed/logs/application.log
+grep "FATAL" $APP_LOG
 
 # Count FATAL messages in application.log
-fatal_count=$(grep -c "FATAL" /home/ubayed/logs/application.log)
+fatal_count=$(grep -c "FATAL" $APP_LOG)
 echo -e "\nNumber of FATAL messages in application.log: $fatal_count"
 
 echo "==============================="
 
 # Error messages in system.log
 echo  "ERROR messages in system.log:"
-grep "ERROR" /home/ubayed/logs/system.log
+grep "ERROR" $SYS_LOG
 
 # Count ERROR messages in system.log
-error_count_system=$(grep -c "ERROR" /home/ubayed/logs/system.log)
+error_count_system=$(grep -c "ERROR" $SYS_LOG)
 echo -e "\nNumber of ERROR messages in system.log: $error_count_system"
 
 echo "==============================="
 
 # FATAL messages in system.log
 echo "FATAL messages in system.log:"
-grep "FATAL" /home/ubayed/logs/system.log
+grep "FATAL" $SYS_LOG
 
 # Count FATAL messages in system.log
-fatal_count_system=$(grep -c "FATAL" /home/ubayed/logs/system.log)
+fatal_count_system=$(grep -c "FATAL" $SYS_LOG)
 echo -e "\nNumber of FATAL messages in system.log: $fatal_count_system"
 ```
 
 5. Press `Esc` to exit insert mode, then type `:wq` to save and quit Vim
 6. Make the script executable: `chmod +x log_analysis.sh`
 7. Run the script: `./log_analysis.sh`
+
+### Notes
+
+1. `echo -e` allows for the interpretation of backslash escapes, enabling the use of `\n` for new lines.
 
 ## References:
 
