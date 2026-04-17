@@ -16,6 +16,10 @@ Variables in Bash scripting allow you to store and manipulate data. They can be 
 
 Arrays in Bash allow you to store multiple values in a single variable. This can be useful for managing lists of items, such as error keywords in log analysis.
 
+## Command substitution
+
+Command substitution allows you to capture the output of a command and use it as a variable in your script. Syntax: `VARIABLE=$(command)`.
+
 ## 1. Example of manual log analysis
 
 1. `cd logs`
@@ -54,7 +58,8 @@ echo "Analyzing log files..."
 echo "==============================="
 
 echo "list of log files modified in the last 24 hours:"
-find $LOG_DIR -name "*.log" -mtime -1
+LOG_FILES=$(find $LOG_DIR -name "*.log" -mtime -1)
+echo "$LOG_FILES"
 
 echo "==============================="
 
@@ -125,6 +130,9 @@ echo -e "\nNumber of CRITICAL messages in system.log: $critical_count_system"
 
 1. `echo -e` allows for the interpretation of backslash escapes, enabling the use of `\n` for new lines.
 2. In bash scripting, spaces around the `=` sign in variable assignment are not allowed. For example, `error_count=$(grep -c "ERROR" $APP_LOG)` is correct, while `error_count = $(grep -c "ERROR" $APP_LOG)` will result in an error.
+3. Access all elements of an array using `${ARRAY_NAME[@]}`. 
+4. To access a specific element of an array, use `${ARRAY_NAME[index]}`. 
+5. Get array length using `${#ARRAY_NAME[@]}`.
 
 ## References:
 
