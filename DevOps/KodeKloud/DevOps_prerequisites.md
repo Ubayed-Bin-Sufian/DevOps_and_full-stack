@@ -76,3 +76,8 @@ According to the Stack Overflow Developer Survey 2024, Linux is the most commonl
 
 - `curl -O https://www.digitalocean.com/robots.txt`: Download a file from the specified URL and save it with the custom name. Without the *-o* flag, the content will be displayed in the terminal instead of being saved to a file. `curl`; "Client URL".
 - `wget https://example.com/file.txt -O file.txt`: Download a file from the specified URL and save it with a custom name. `wget`; "World Wide Web get".
+
+### Check OS version
+
+- `ls /etc/*release*`: This command lists the contents of the /etc directory that match the pattern *release*, which typically includes files that contain information about the operating system version and distribution. The output may vary depending on the Linux distribution being used, but it often includes files like `os-release`, `lsb-release`, or `redhat-release` that provide details about the OS version, name, and other relevant information.
+- `cat /etc/*release*`: This command displays the contents of the files in the /etc directory that match the pattern *release*. These files usually contain information about the operating system version and distribution. By running this command, you can see details such as the OS name, version number, and other relevant information about the Linux distribution you are using.
