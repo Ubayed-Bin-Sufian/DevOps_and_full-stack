@@ -125,9 +125,7 @@ It does not resolve dependencies automatically, so you may need to manually inst
 
 Services are background processes that run on a server to provide specific functionality, such as web hosting, database management, or file sharing.
 
-Once the software is installed in the servers that runs in the background, eg: web server, database server, etc, we need to make sure that the service stay running even after a reboot. Services makes sure that the software runs all the time and follow the right startup sequence. For example, if you have a web application that depends on a database, you want to make sure that the database service starts before the web server service when the system boots up.
-
-Whenever a software is installed that runs in the background, they are automatically configured as services in the system.
+Once software that runs in the background (e.g., web servers, databases) is installed, it needs to keep running reliably even after a reboot. Services ensure that these programs start automatically and in the correct order. For example, a database service should start before a web server that depends on it. Most background software is configured as a service during installation.
 
 - `service <service_name> start`    : Start a service. (old command, still works in some distros)
 - `systemctl start <service_name>`  : Start a service. (new command, used in most modern distros)
@@ -138,14 +136,14 @@ Whenever a software is installed that runs in the background, they are automatic
 
 #### How to configure a software/program as a service?
 
-Systemd services are a type of service management system used in many modern Linux distributions to manage and control the startup, execution, and shutdown of services. A systemd service is defined by a unit file, which is a configuration file that describes the service and its behavior. The unit file typically has a .service extension and is located in the `/etc/systemd/system/` directory.
+Most modern Linux distributions use systemd to manage services. Each service is defined using a unit file, which is a configuration file (with a `.service` extension) typically located in `/etc/systemd/system/`.
 
 Steps to configure a software as a systemd service:
 1. Create a unit file for the service. For example, if you want to create a service for a web application called "myapp", you would create a file named `myapp.service` in the `/etc/systemd/system/` directory.
-2. Define a section caled `[Service]` in the unit file, where you specify the command to start the service and directive named `ExecStart` to specify the command that will be executed to start the service. If the application has other dependencies, commands or scripts to run before or after starting the main application, you can specify them using directives like `ExecStartPre` or `ExecStartPost`. If the app needs to be restarted if it crashes, you can use the `Restart` directive. 
-3. To configure the service to start automatically at boot time, define a section called `[Install]` in the unit file. In this section, you can specify the target that the service should be associated with using the `WantedBy` directive. For example, if you want the service to start when the system reaches the multi-user target (which is a common target for services), you would add the following lines to the unit file.
-4. After defining the `[Install]` section, you can enable the service to start at boot time using the `systemctl` command: `sudo systemctl enable myapp.service`
-5. To add additional metadata about the service, such as a description or dependencies, you can include a `[Unit]` section in the unit file.
+2. To add additional metadata about the service, such as a description or dependencies, you can include a `[Unit]` section in the unit file.
+3. Define a section caled `[Service]` in the unit file, where you specify the command to start the service and directive named `ExecStart` to specify the command that will be executed to start the service. If the application has other dependencies, commands or scripts to run before or after starting the main application, you can specify them using directives like `ExecStartPre` or `ExecStartPost`. If the app needs to be restarted if it crashes, you can use the `Restart` directive. 
+4. To configure the service to start automatically at boot time, define a section called `[Install]` in the unit file. In this section, you can specify the target that the service should be associated with using the `WantedBy` directive. For example, if you want the service to start when the system reaches the multi-user target (which is a common target for services), you would add the following lines to the unit file.
+5. After defining the `[Install]` section, you can enable the service to start at boot time using the `systemctl` command: `sudo systemctl enable myapp.service`
 6. Save the unit file and reload the systemd manager configuration to recognize the new service: `sudo systemctl daemon-reload`
 7. Start the service using the `systemctl` command: `sudo systemctl start myapp.service` 
 8. Stop the service using the `systemctl` command: `sudo systemctl stop myapp.service`
