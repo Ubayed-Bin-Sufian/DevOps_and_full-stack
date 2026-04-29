@@ -120,3 +120,48 @@ It does not resolve dependencies automatically, so you may need to manually inst
 - `cat /etc/yum.repos.d/<repo_file>.repo`: Display the contents of a specific repository configuration file. This file contains details about the repository, such as its name, base URL, and whether it is enabled or disabled. By examining this file, you can understand where yum will look for packages when you run installation or update commands, and you can also modify the repository settings if needed.
 - `yum list <package_name>`: Check if a specific package is available in the configured repositories. 
 - `yum --showduplicates list <package_name>`: Check for all available versions of a specific package in the configured repositories. This command will show you all the versions of the package that are available for installation, allowing you to choose which version you want to install or update to.
+
+### Services
+
+Services are background processes that run on a server to provide specific functionality, such as web hosting, database management, or file sharing.
+
+Once the software is installed in the servers that runs in the background, eg: web server, database server, etc, we need to make sure that the service stay running even after a reboot. Services makes sure that the software runs all the time and follow the right startup sequence. For example, if you have a web application that depends on a database, you want to make sure that the database service starts before the web server service when the system boots up.
+
+Whenever a software is installed that runs in the background, they are automatically configured as services in the system.
+
+- `service <service_name> start`    : Start a service. (old command, still works in some distros)
+- `systemctl start <service_name>`  : Start a service. (new command, used in most modern distros)
+- `systemctl stop <service_name>`   : Stop a service.
+- `systemctl status <service_name>` : Check the status of a service (whether it's running or not).
+- `systemctl enable <service_name>` : Enable a service to start automatically at boot time.
+- `systemctl disable <service_name>`: Disable a service from starting automatically at boot time.
+
+#### How to configure a software/program as a service?
+
+Systemd services are a type of service management system used in many modern Linux distributions to manage and control the startup, execution, and shutdown of services. A systemd service is defined by a unit file, which is a configuration file that describes the service and its behavior. The unit file typically has a .service extension and is located in the `/etc/systemd/system/` directory.
+
+Steps to configure a software as a systemd service:
+1. Create a unit file for the service. For example, if you want to create a service for a web application called "myapp", you would create a file named `myapp.service` in the `/etc/systemd/system/` directory.
+2. Define a section caled `[Service]` in the unit file, where you specify the command to start the service and directive named `ExecStart` to specify the command that will be executed to start the service. If the application has other dependencies, commands or scripts to run before or after starting the main application, you can specify them using directives like `ExecStartPre` or `ExecStartPost`. If the app needs to be restarted if it crashes, you can use the `Restart` directive. 
+3. To configure the service to start automatically at boot time, define a section called `[Install]` in the unit file. In this section, you can specify the target that the service should be associated with using the `WantedBy` directive. For example, if you want the service to start when the system reaches the multi-user target (which is a common target for services), you would add the following lines to the unit file.
+4. After defining the `[Install]` section, you can enable the service to start at boot time using the `systemctl` command: `sudo systemctl enable myapp.service`
+5. To add additional metadata about the service, such as a description or dependencies, you can include a `[Unit]` section in the unit file.
+6. Save the unit file and reload the systemd manager configuration to recognize the new service: `sudo systemctl daemon-reload`
+7. Start the service using the `systemctl` command: `sudo systemctl start myapp.service` 
+8. Stop the service using the `systemctl` command: `sudo systemctl stop myapp.service`
+9. Check the status of the service: `sudo systemctl status myapp.service`
+
+Unit file contents:
+```
+[Unit]
+Description=My Web Application Service
+
+[Service]
+ExecStart=/usr/bin/python3 /path/to/myapp.py
+ExecStartPre=/usr/bin/echo "Starting myapp service..."
+ExecStartPost=/usr/bin/echo "myapp service started successfully!"
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+```
