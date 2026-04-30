@@ -163,3 +163,7 @@ Restart=always
 [Install]
 WantedBy=multi-user.target
 ```
+
+## Vi Editor
+
+`vi` is a powerful text editor that is commonly used in Linux environments. In devops and cloud environments, you will often need to edit configuration files, write scripts, or manage code directly on the server. Knowing how to use `vi` allows you to efficiently make changes to files without needing a graphical interface, which is especially important when working on remote servers via SSH.
