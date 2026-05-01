@@ -166,4 +166,27 @@ WantedBy=multi-user.target
 
 ## Vi Editor
 
-`vi` is a powerful text editor that is commonly used in Linux environments. In devops and cloud environments, you will often need to edit configuration files, write scripts, or manage code directly on the server. Knowing how to use `vi` allows you to efficiently make changes to files without needing a graphical interface, which is especially important when working on remote servers via SSH.
+`vi` is a powerful text editor that is commonly used in Linux environments. In devops and cloud environments, you will often need to edit configuration files, write scripts, or manage code directly on the server. Knowing how to use `vi` allows you to efficiently make changes to files without needing a graphical interface, which is especially important when working on remote servers via SSH. vi editor comes by default in most Linux distributions. Types of vi editors:
+- `vi`: The original version of the editor.
+- `vim` (Vi IMproved): An enhanced version of vi with additional features and improvements. It is widely used and often the default vi editor in many Linux distributions.
+- `nvim` (Neovim): A modern fork of vim that aims to improve performance and add new features while maintaining compatibility with vim. It is gaining popularity among developers for its extensibility and improved user experience.
+- `nano`: A simpler text editor that is easier for beginners to use. It provides a more user-friendly interface compared to vi and vim, making it a good choice for those who are new to command-line text editing.
+
+### Basic vi Commands
+
+Vi editor has two main modes: **command mode** and **insert mode**. When you open a file in vi, you start in command mode, where you can navigate through the file and execute commands. To edit the file, you need to switch to insert mode. Here are some basic commands to get started with vi editor:
+
+- `vi filename`: Open a file in vi editor. This will open the specified file in command mode.
+- `i`: Switch to insert mode to start editing the file. In insert mode, you can type and make changes to the file. To return to command mode from insert mode, press the `Esc` key.
+- Use the arrow keys to navigate through the file in command mode. You can also use `h`, `j`, `k`, and `l` keys for left, down, up, and right navigation respectively.
+- `x`: Delete the character under the cursor in command mode.
+- `dd`: Delete the entire line where the cursor is located in command mode.
+- `yy`: Copy the entire line where the cursor is located in command mode.
+- `p`: Paste the copied line below the current line in command mode.
+- `Ctrl + u`: Scroll up half a page in command mode.
+- `Ctrl + d`: Scroll down half a page in command mode.
+- `:`: Enter command-line mode in vi editor. In this mode, you can execute various commands to save, quit, or perform other actions on the file.
+- `:w`: Save the changes made to the file in command-line mode.
+- `:q`: Quit the vi editor in command-line mode. If you have unsaved changes, it will prompt you to save before quitting.
+- `:wq`: Save the changes and quit the vi editor in command-line mode.
+- `/search_term`: Search for a specific term in the file in command mode. This will highlight the occurrences of the search term in the file. You can navigate through the search results using `n` (next) and `N` (previous) commands in command mode.
