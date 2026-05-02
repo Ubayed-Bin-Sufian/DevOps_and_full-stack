@@ -190,3 +190,51 @@ Vi editor has two main modes: **command mode** and **insert mode**. When you ope
 - `:q`: Quit the vi editor in command-line mode. If you have unsaved changes, it will prompt you to save before quitting.
 - `:wq`: Save the changes and quit the vi editor in command-line mode.
 - `/search_term`: Search for a specific term in the file in command mode. This will highlight the occurrences of the search term in the file. You can navigate through the search results using `n` (next) and `N` (previous) commands in command mode.
+
+## Virtualization
+
+### what we'll cover?
+
+- Setting up your lab (laptop vs cloud)
+- Virtual Box
+    - Deploying VMs
+    - Multiple VMs
+    - Networking and troubleshooting network issues
+    - Snapshots and Restore VMs
+
+### Setting up labs in laptop
+
+There are two main options for setting up labs for practicing DevOps skills: using a local laptop or using cloud-based virtual machines such as AWS, Azure, or Google Cloud Platform.
+
+We will focus on setting up labs in home environment using laptop or desktop computer. This approach allows you to have full control over your lab environment and is cost-effective since you can use your existing hardware. You can use virtualization software like VirtualBox to create and manage virtual machines on your local machine. 
+
+#### What is a home lab environment? What are the things that we can do in it?
+
+While learning devops and cloud technologies, we will come across various tools such as git for version control, Jenkins for continuous integration and deployment, Docker for containerization, Kubernetes for container orchestration, Ansible, Chef or Puppet for configuration management, programming frameworks like Python, Java or Node.js, and their dependent libraries, web servers like Apache, Nginx, tomcat servers, databases like MySQL or MongoDB, cloud management tools like AWS CLI, Azure CLI, Google Cloud SDK, differenct OS such as Ubuntu, CentOS, Red Hat, and many more. We can install all of these tools and technologies in our laptop, but it can create a mess and may lead to conflicts between different software versions, compatibility issues and performance degradation. For example, if you have a project that requires Python 3.8 but your system has Python 3.10 installed, it can cause compatibility issues.
+
+One way to avoid this is to use virtual machines (VMs) to create isolated environments for each project or tool. This way, you can have different versions of software and tools installed in separate VMs without affecting your main system. If anything wrong happens in the VM, we can simply delete it and create a new one without worrying about breaking our main system. Or take a backup of the VM using snapshots and restore it to a previous state if needed. This allows us to experiment and learn different systems in different VMs and different OS in VMs irrespective of the OS of our main system. 
+
+### Virtualization software
+
+Virtualization software / hypervisors are tools that allow you to create and manage virtual machines on your physical hardware. They provide a layer of abstraction between the physical hardware and the virtual machines, allowing you to run multiple operating systems and applications on a single physical machine. 
+
+Types of virtualization software:
+
+1. **Type 1 Hypervisor (Bare-metal)**: This type of hypervisor runs directly on the physical hardware and manages the virtual machines. Examples include VMware ESXi, Microsoft Hyper-V, and Xen. Type 1 hypervisors are typically used in enterprise or production environments for server virtualization. They are used when we need large number of VMs, high performance, and better resource management. They require high resource requirements and they are expensive. 
+
+2. **Type 2 Hypervisor (Hosted)**: This type of hypervisor runs on top of a host operating system and manages the virtual machines. Examples include Oracle VirtualBox, VMware Workstation, and Parallels Desktop. Type 2 hypervisors are commonly used for desktop virtualization and are suitable for home labs and development environments. They are easier to set up and use, and they are more cost-effective compared to Type 1 hypervisors. However, they may have performance overhead due to running on top of a host operating system.
+
+We will be using Type 2 hypervisor, specifically Oracle VirtualBox, for our home lab environment. 
+
+Comparison of Oracle VirtualBox and VMware Workstation:
+
+| Feature                     | Oracle VirtualBox                 | VMware Workstation                |
+|-----------------------------|-----------------------------------|-----------------------------------|
+| Cost                        | Free and open-source              | Paid software with a free trial   |
+| Platform Support             | Windows, macOS, Linux             | Windows, Linux                    |
+| Performance                  | Good performance for most use cases | Generally better performance, especially for resource-intensive applications |
+| User Interface              | User-friendly and intuitive       | User-friendly with more advanced features |
+| Snapshot and Cloning        | Supports snapshots and cloning    | Supports snapshots and cloning    |
+| Resource Management         | Good resource management features  | Advanced resource management features |
+
+
