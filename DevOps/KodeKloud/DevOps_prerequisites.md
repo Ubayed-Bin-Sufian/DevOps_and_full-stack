@@ -237,4 +237,7 @@ Comparison of Oracle VirtualBox and VMware Workstation:
 | Snapshot and Cloning        | Supports snapshots and cloning    | Supports snapshots and cloning    |
 | Resource Management         | Good resource management features  | Advanced resource management features |
 
+#### Installing VirtualBox on Linux Mint 22.3 (Zena)
 
+
+This is the latest version of Linux Mint I had when writing this blog.
