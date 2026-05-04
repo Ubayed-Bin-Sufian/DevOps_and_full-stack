@@ -237,7 +237,67 @@ Comparison of Oracle VirtualBox and VMware Workstation:
 | Snapshot and Cloning        | Supports snapshots and cloning    | Supports snapshots and cloning    |
 | Resource Management         | Good resource management features  | Advanced resource management features |
 
-#### Installing VirtualBox on Linux Mint 22.3 (Zena)
+#### Download VirualBox for Linux hosts
 
+Please refer to the official VirtualBox website for the latest version and installation instructions for your specific Linux distribution: https://www.virtualbox.org/wiki/Linux_Downloads
+
+As i use linux mint, i will provide the instructions for installing VirtualBox on Linux Mint 22.3 (Zena).
+
+#### Installing VirtualBox on Linux Mint 22.3 (Zena) using official repositories
 
 This is the latest version of Linux Mint I had when writing this blog.
+
+For system information, you can use the following commands:
+
+- `cat /etc/os-release`: This command displays the contents of the os-release file, which contains information about the operating system, including the name, version, and other relevant details. It is another way to check the version of Linux Mint you are using.
+
+Q: Which VirtualBox repo to use?
+
+A: Linux Mint 22.3 is based on:
+
+- **Ubuntu Codename:** `noble` (Ubuntu 24.04 LTS base)
+- **Architecture:** amd64
+
+So we use: **Ubuntu 24.04 (noble) repository**
+
+**Steps to install VirtualBox on Linux Mint 22.3 (Zena):**
+
+1. Add Oracle VirtualBox Repository Key
+
+As per official guide:
+
+```bash
+wget -O- https://www.virtualbox.org/download/oracle_vbox_2016.asc | \
+sudo gpg --yes --output /usr/share/keyrings/oracle-virtualbox-2016.gpg --dearmor
+```
+
+2. Add Repository (Ubuntu base = noble)
+
+Since Linux Mint 22.3 is based on **Ubuntu 24.04 (noble)** (can be found out through `cat /etc/os-release` ):
+
+```bash
+echo "deb [arch=amd64 signed-by=/usr/share/keyrings/oracle-virtualbox-2016.gpg] https://download.virtualbox.org/virtualbox/debian noble contrib" | \
+sudo tee /etc/apt/sources.list.d/virtualbox.list
+```
+
+3. Install VirtualBox
+
+```bash
+sudo apt-get update
+sudo apt-get install virtualbox-7.1
+```
+
+4. Verify Installation
+
+```bash
+virtualbox --help
+```
+
+#### Setting up Oracle VirtualBox
+
+1. Open VirtualBox from the applications menu.
+2. Click on "New" to create a new virtual machine.
+3. Follow the prompts to configure the virtual machine, including selecting the operating system, allocating memory, and creating a virtual hard disk. For base memory, it is recommended to allocate at least 2GB (2048 MB) for a Linux VM, but you can allocate more if your system has enough resources. I selected 1GB (1024 MB) for my VM. For hard disk, we can allocate some space for the VM to store its files and data and install the OS manually. OR we can use a pre-configured virtual machine image that already has the OS installed. We can find it from [osbox.org](https://www.osboxes.org/).
+4. Once the virtual machine is created, start in Normal Start. 
+
+**[For installation of VirtualBox on windows and macOS, please refer to the youtube video mentioned in Reference section below]**
