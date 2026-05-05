@@ -295,9 +295,13 @@ virtualbox --help
 
 #### Setting up Oracle VirtualBox
 
-1. Open VirtualBox from the applications menu.
+1. Open Oracle VirtualBox from the applications menu.
 2. Click on "New" to create a new virtual machine.
-3. Follow the prompts to configure the virtual machine, including selecting the operating system, allocating memory, and creating a virtual hard disk. For base memory, it is recommended to allocate at least 2GB (2048 MB) for a Linux VM, but you can allocate more if your system has enough resources. I selected 1GB (1024 MB) for my VM. For hard disk, we can allocate some space for the VM to store its files and data and install the OS manually. OR we can use a pre-configured virtual machine image that already has the OS installed. We can find it from [osbox.org](https://www.osboxes.org/).
-4. Once the virtual machine is created, start in Normal Start. 
+3. Follow the prompts to configure the virtual machine, including selecting the operating system, allocating memory, and creating a virtual hard disk. For base memory, it is recommended to allocate at least 2GB (2048 MB) for a Linux VM, but you can allocate more if your system has enough resources. I selected 1GB (1024 MB) for my VM. For hard disk, we can allocate some space for the VM to store its files and data and install the OS manually through a CD drive. OR we can use a pre-configured virtual machine image that already has the OS installed. We can find it from [osbox.org](https://www.osboxes.org/).
+4. I preferred to use a pre-configured virtual machine image for linux mint 22.1 Xia. I have downloaded the .7z file. After extracting it, I got a .vmdk file which is the virtual hard disk image. We will use this .vmdk file to create a new virtual machine in VirtualBox.
+5. When prompted for hard disk, select "Use an existing virtual hard disk file" and browse to the location of the extracted .vmdk file and select it.
+6. Before powering on, right click on the created VM and go to settings. Under "Network", select "Bridged Adapter" to allow the VM to connect to the same network as your host machine. This will enable the VM to have its own IP address and access the internet. 
+7. Once the virtual machine is created, start in Normal Start.
+8. The VM will boot up and you can log in using the credentials provided by osboxes.org (username: osboxes, password: osboxes.org).
 
 **[For installation of VirtualBox on windows and macOS, please refer to the youtube video mentioned in Reference section below]**
