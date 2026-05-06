@@ -305,3 +305,20 @@ virtualbox --help
 8. The VM will boot up and you can log in using the credentials provided by osboxes.org (username: osboxes, password: osboxes.org).
 
 **[For installation of VirtualBox on windows and macOS, please refer to the youtube video mentioned in Reference section below]**
+
+### Virtual Box Connectivity
+
+In this section, we will learn about 
+- How to connect and ssh into a vm
+- why can't i access the server on my vm
+- what's port mapping?
+
+When a vm is downloaded and installed, we can start the vm using:
+1. Normal start
+    It gives a console to the vm. we can see the ui and if the image has a GUI, we can see and use it. In DevOps world, it's better to work with CLI access instead of GUI. If the console is closed, the vm must be shut down or suspended.
+
+2. Headless start
+    In this mode, the vm starts but the console windows will not be opened. The vm can only be accessed using ssh or remote desktop tools. 
+
+3. Detachable start
+    Starts the vm in normal mode, but closing the console does not shut down the vm. In addition to normal mode, the vm has the option to run in the background.
