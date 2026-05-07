@@ -322,3 +322,33 @@ When a vm is downloaded and installed, we can start the vm using:
 
 3. Detachable start
     Starts the vm in normal mode, but closing the console does not shut down the vm. In addition to normal mode, the vm has the option to run in the background.
+
+Depending on what os has been used on the guest system we have different ways of connecting to it for example say we
+had a windows system to remotely connect to the windows system without using the console you could use the some kind of
+remote desktop clients such as the one provided by microsoft. now if the guest has a linux operating system such as linux mint,  centos, etc we can connect to it remotely through ssh using ssh clients like the terminal app in linux or mac and tools like putty
+in windows.
+
+Even the vms are within our laptop (host) think of them as separate machines connected to the same network so whatever you need for one system to connect to another system you would need these vms configured with ip addresses and the relevant services must be configured and running on. On windows, the remote desktop service needs to be running and on linux the ssh service needs to be running so make sure ssh server is installed and is in a running state in the vm (guest system). If configured you can ssh into the vm from the host system using the terminal on the host and the ip address of the remote vm.
+
+#### How do you configure ssh services and ip addresses on the vm?
+
+Use the console to perform initial configuration it's a common practice to use the console to perform initial configurations and then once ssh is enabled switch over to the terminal for all future interactions.
+
+If you run into issues connecting to a vm check to **make sure that the vm has an ip address set and that you are using the right ip address and that ssh service on the remote vm is running**.
+
+There are two approaches of networking when deploying vms:
+
+1. Bridged adapter : the vm becomes part of the external network and it gets an ip address assigned to it you can simply ssh to it as you would ssh to another system in your network.
+Eg: `ssh username@ip_address -p port_number`
+2. NAT : it doesn't connect to the external network and so does not get an ip address on the external network that we can use ssh
+to. If you had multiple vms you will see that all vms configured with nat are isolated and they all get the same ip address assigned and they cannot reach each other however with network address translation they can reach the external world so you should have internet connectivity if your host has internet connectivity you can verify that by trying to ping an external website. To ssh into the guest, first verify using `service sshd status` to see the service is running. Now, we need to set up port forwarding. In the Oracle Virtual Box, settings of the vm created --> Network --> Advanced; Port forwarding --> Add a new rule. The default port for SSH is port 22. The ssh service listens on port 22 on the vm but we also have an ssh service on our host that uses port 22. so we cannot forward 22 on our host to the vm so we will configure another port say port 2222 on the host to forward to port 22 on the vm so we add a rule for that and we name it ssh port. Now we can ssh into the vm using the forwarded port 
+
+Q: How to check and set ip addresses?
+
+A: Different operating systems have different device names and commands may differ. Refer to OS documentations for setting it.
+
+#### Start SSH service
+
+To check if the daemon is running, run `sshd status command` if it's not running run the `service sshd start` command to start it well.
+
+**[For connecting to a vm on windows and macOS, please refer to the youtube video mentioned in Reference section below]**
