@@ -314,14 +314,11 @@ In this section, we will learn about
 - what's port mapping?
 
 When a vm is downloaded and installed, we can start the vm using:
-1. Normal start
-    It gives a console to the vm. we can see the ui and if the image has a GUI, we can see and use it. In DevOps world, it's better to work with CLI access instead of GUI. If the console is closed, the vm must be shut down or suspended.
+1. **Normal start**: It gives a console to the vm. we can see the ui and if the image has a GUI, we can see and use it. In DevOps world, it's better to work with CLI access instead of GUI. If the console is closed, the vm must be shut down or suspended.
 
-2. Headless start
-    In this mode, the vm starts but the console windows will not be opened. The vm can only be accessed using ssh or remote desktop tools. 
+2. **Headless start**: In this mode, the vm starts but the console windows will not be opened. The vm can only be accessed using ssh or remote desktop tools. 
 
-3. Detachable start
-    Starts the vm in normal mode, but closing the console does not shut down the vm. In addition to normal mode, the vm has the option to run in the background.
+3. **Detachable start**: Starts the vm in normal mode, but closing the console does not shut down the vm. In addition to normal mode, the vm has the option to run in the background.
 
 Depending on what os has been used on the guest system we have different ways of connecting to it for example say we
 had a windows system to remotely connect to the windows system without using the console you could use the some kind of
@@ -334,7 +331,7 @@ Even the vms are within our laptop (host) think of them as separate machines con
 
 Use the console to perform initial configuration it's a common practice to use the console to perform initial configurations and then once ssh is enabled switch over to the terminal for all future interactions.
 
-If you run into issues connecting to a vm check to **make sure that the vm has an ip address set and that you are using the right ip address and that ssh service on the remote vm is running**.
+If you run into issues connecting to a vm check to **make sure that the vm has an ip address set and you are using the right ip address and that ssh service on the remote vm is running**.
 
 There are two approaches of networking when deploying vms:
 
@@ -352,3 +349,161 @@ A: Different operating systems have different device names and commands may diff
 To check if the daemon is running, run `sshd status command` if it's not running run the `service sshd start` command to start it well.
 
 **[For connecting to a vm on windows and macOS, please refer to the youtube video mentioned in Reference section below]**
+
+### Virtual Box Networking
+
+In this section we will discuss,
+
+- Understand various types of networking - NAT, bridged, host only and what do they mean and when to use what type of network
+- how multiple vms connect each other
+- how to troubleshoot issues where you can't reach the internet 
+
+#### A Computer Can Have More Than One Door to the Network
+
+When we think about connecting a computer to the internet, we usually imagine just one connection — maybe Wi-Fi.
+
+But a computer can actually have **multiple network interfaces**, and each one acts like its own separate **door** to the network.
+
+Let me show you using my own laptop.
+
+When I ran:
+
+```bash
+ip addr show
+```
+
+I got this:
+
+```bash
+ubayed@ubayed-HP-ProBook-450-G4:~$ ip addr show
+
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    inet 127.0.0.1/8
+
+2: enp1s0: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500
+    link/ether 3c:52:82:df:af:68
+
+3: wlp2s0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500
+    inet 192.168.0.105/24
+```
+
+At first glance, this looks technical. But there’s a simple story here.
+
+---
+
+#### Meet the three characters
+
+#### 1. `lo` — The computer talking to itself
+
+The **loopback interface** (`lo`) is special.
+
+```bash
+inet 127.0.0.1/8
+```
+
+This is the famous **localhost** address.
+Think of it as your laptop looking into a mirror.
+
+When an application talks to `127.0.0.1`, it is not going out to the network — it is talking back to the same machine.
+
+---
+
+#### 2. `enp1s0` — The unused Ethernet port
+
+Next:
+
+```bash
+2: enp1s0
+state DOWN
+NO-CARRIER
+```
+
+This is my **wired Ethernet adapter**. 
+It exists, but no cable is plugged in.
+
+Imagine a door in your house that exists but is closed — nobody can enter through it.
+
+That is why there is **no IP address** assigned here.
+
+---
+
+#### 3. `wlp2s0` — The active Wi-Fi connection
+
+Finally:
+
+```bash
+3: wlp2s0
+inet 192.168.0.105/24
+state UP
+```
+
+This is my **wireless adapter**.
+
+This one is connected to my home Wi-Fi, so my router (through DHCP) assigned it an IP:
+
+```bash
+192.168.0.105
+```
+
+This is the address other devices on my home network can use to reach my laptop.
+
+---
+
+#### What if both were connected?
+
+Now imagine I plug in an Ethernet cable while Wi-Fi is still on.
+
+Suddenly my laptop could look like this:
+
+```text
+enp1s0  -> 192.168.0.110
+wlp2s0  -> 192.168.0.105
+```
+
+Same laptop.
+
+Two interfaces.
+
+Two IP addresses.
+
+Two different doors into the same machine.
+
+Other devices could reach me using **either address**.
+
+---
+
+#### The big lesson
+
+A computer is not assigned an IP address.
+
+An **interface** is assigned an IP address.
+
+That is an important distinction.
+
+Your laptop may have:
+
+- one Wi-Fi adapter
+- one Ethernet adapter
+- a VPN tunnel
+- virtual machine adapters
+- docker bridges
+- loopback
+
+Each can have its **own IP address**.
+
+So when someone says:
+
+> "What is your computer's IP?"
+
+The more accurate question is:
+
+> "Which interface are you talking about?"
+
+### Glossary
+
+- A network interface is the part of a computer that allows it to communicate on a network.
+- A network adapter is the hardware (or virtual hardware) that provides that interface.
+
+```
+Hardware (adapter)  --->  Operating System sees it as ---> Interface
+```
