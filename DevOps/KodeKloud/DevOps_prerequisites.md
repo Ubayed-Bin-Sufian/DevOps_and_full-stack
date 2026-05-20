@@ -507,3 +507,19 @@ The more accurate question is:
 ```
 Hardware (adapter)  --->  Operating System sees it as ---> Interface
 ```
+
+
+Think of your laptop as a small building. Inside that building, VirtualBox creates multiple “virtual computers” (VMs).
+
+Each VM:
+- Has its own network card (adapter)
+- Can connect to a “network type” you choose
+- Can have up to 4 network adapters (but usually 1 is enough)
+
+Now the key question is:
+
+> “Which network is this VM plugged into?”
+
+That choice defines everything.
+
+---
