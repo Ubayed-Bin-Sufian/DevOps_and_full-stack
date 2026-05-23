@@ -523,3 +523,49 @@ Now the key question is:
 That choice defines everything.
 
 ---
+
+# 1. Host-Only Network (Private Lab Inside Your Laptop)
+
+## 🧩 Concept
+
+A **Host-Only network** is like creating a private LAN inside your laptop.
+
+- Only your host machine + VMs can talk
+- No internet access by default
+- Completely isolated from the outside world
+
+---
+
+## 🌐 Example Setup
+
+Imagine this network:
+
+
+Host machine: 192.168.5.1
+VM1: 192.168.5.2
+VM2: 192.168.5.3
+VM3: 192.168.5.4
+
+
+All machines:
+- Can ping each other
+- Share files/services internally
+- Cannot access the internet
+
+---
+
+## ⚙️ How it works in VirtualBox
+
+1. Go to **File → Host Network Manager**
+2. Create a new host-only network
+3. VirtualBox creates a virtual adapter (like `vboxnet0`)
+4. Your host gets an IP like `192.168.5.1`
+5. Attach VMs to **Host-Only Adapter**
+
+---
+
+## 🔥 Use Case
+
+- Testing microservices locally
+- Simulating private networks
+- Database + backend interaction in isolation
