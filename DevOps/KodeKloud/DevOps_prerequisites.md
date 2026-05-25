@@ -569,3 +569,61 @@ All machines:
 - Testing microservices locally
 - Simulating private networks
 - Database + backend interaction in isolation
+
+# 2. NAT Network (Private Network + Internet Access)
+
+## 🧩 Concept
+
+A **NAT Network** is like a private LAN with a built-in router to the internet.
+
+- VMs can talk to each other
+- VMs can access the internet
+- External systems still cannot directly access VMs
+
+---
+
+## 🌍 How it works (important mental model)
+
+When a VM sends a request:
+
+1. VM sends packet with its private IP (e.g. `10.0.2.4`)
+2. VirtualBox NAT engine replaces it with host IP
+3. Request goes to internet / external system
+4. Response comes back to host
+5. NAT engine forwards it back to correct VM
+
+This is called:
+
+> **Network Address Translation (NAT)**
+
+---
+
+## 🌐 Example
+
+
+VM1 → 10.0.2.4
+VM2 → 10.0.2.5
+VM3 → 10.0.2.6
+
+
+All share:
+- Internet access
+- Internal communication (within NAT network)
+
+---
+
+## ⚙️ Setup
+
+1. Go to **VirtualBox Preferences → Network**
+2. Create a **NAT Network**
+3. Attach VM → Network → “NAT Network”
+
+---
+
+## 🔥 Use Case
+
+- Running development environments with internet access
+- Package installs (apt, npm, pip)
+- APIs + database testing with external services
+
+---
