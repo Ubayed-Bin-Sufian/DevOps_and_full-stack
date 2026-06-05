@@ -627,3 +627,33 @@ All share:
 - APIs + database testing with external services
 
 ---
+
+# 3. NAT (Default VM Mode)
+
+## 🧩 Concept
+
+This is similar to NAT Network but simpler and more isolated.
+
+- VM can access internet
+- VM cannot talk to other VMs (by default)
+- Each VM behaves like it has its own mini-router
+
+---
+
+## ⚠️ Key Difference vs NAT Network
+
+| Feature | NAT | NAT Network |
+|--------|-----|-------------|
+| Internet access | ✅ | ✅ |
+| VM-to-VM communication | ❌ | ✅ |
+| Shared network | ❌ | ✅ |
+
+---
+
+## 🔥 Use Case
+
+- Single VM development
+- Safer isolation
+- Quick setup without networking complexity
+
+---
