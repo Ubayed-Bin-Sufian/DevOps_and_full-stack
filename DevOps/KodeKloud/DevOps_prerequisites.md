@@ -657,3 +657,49 @@ This is similar to NAT Network but simpler and more isolated.
 - Quick setup without networking complexity
 
 ---
+
+# 4. Bridged Network (VM becomes a real machine on your LAN)
+
+## 🧩 Concept
+
+Bridged networking connects your VM directly to your physical network.
+
+> The VM behaves like a real computer on your Wi-Fi/router.
+
+---
+
+## 🌍 Example
+
+If your home network is:
+
+
+Router: 192.168.1.1
+Laptop: 192.168.1.10
+Phone: 192.168.1.20
+
+
+Then VM becomes:
+
+
+VM: 192.168.1.30
+
+
+Your router sees it as a real device.
+
+---
+
+## ⚙️ What happens internally
+
+- VM gets IP from your router (via DHCP)
+- Same subnet as your laptop
+- Fully visible to other devices
+
+---
+
+## 🔥 Use Case
+
+- Hosting services (web servers, APIs)
+- Testing real network behavior
+- Accessing VM from another machine on LAN
+
+---
