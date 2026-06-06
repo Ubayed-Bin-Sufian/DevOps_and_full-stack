@@ -703,3 +703,30 @@ Your router sees it as a real device.
 - Accessing VM from another machine on LAN
 
 ---
+
+# 5. Internet Connectivity Summary
+
+## 🌐 NAT / NAT Network
+- Internet works automatically
+- Uses host as gateway
+
+## 🌐 Bridged
+- Internet works via router directly
+
+## 🚫 Host-Only
+- No internet by default
+
+---
+
+## 🛠 If Host-Only needs internet
+
+You have two options:
+
+### Option A: Enable IP forwarding on host
+Make your laptop act like a router.
+
+### Option B (simpler): Add second adapter
+- Adapter 1 → Host-Only (private network)
+- Adapter 2 → NAT (internet)
+
+This is the most common real-world setup.
