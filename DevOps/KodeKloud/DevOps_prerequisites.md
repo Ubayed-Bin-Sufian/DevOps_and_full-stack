@@ -9,7 +9,7 @@
 
 - Linux basics
 - Setting up lab environment
-- Virtual Box 
+- Virtual Box
 - Vagrant
 - Linux networking
 - JSON/YAML file structure
@@ -69,7 +69,7 @@ According to the Stack Overflow Developer Survey 2024, Linux is the most commonl
 - `id`: Display user ID and group information.
 - `su username`: Switch to another user account. You will be prompted to enter the password for the specified user. Same machine, different user.
 - `ssh username@hostname`: Connect to a remote server using SSH. You will be prompted to enter the password for the specified user on the remote server. Different machine, login remotely.
-- Every linux system has a super user called the **root user**. The root user has full administrative privileges and can perform any action on the system. In production or enterprise environments, acces to root user is often restricted for security reasons, and users are given specific permissions to perform their tasks. 
+- Every linux system has a super user called the **root user**. The root user has full administrative privileges and can perform any action on the system. In production or enterprise environments, acces to root user is often restricted for security reasons, and users are given specific permissions to perform their tasks.
 - If a normal user needs to perform administrative tasks, they can use the `sudo` command to execute commands with elevated privileges such as installing software, modifying system configurations, or managing user accounts. The root user can grant them sudo privileges by adding their username into the **/etc/sudoers** file or by adding them to a group that has sudo privileges (e.g., the "sudo" group on Debian-based systems). Now, the user can run commands with `sudo` to perform administrative tasks without needing to log in as the root user. The user needs to enter their own password to confirm the action, and the system will log the command for auditing purposes.
 
 ### Download files
@@ -102,7 +102,7 @@ Package managers are tools that automate the process of installing, updating, co
 A software is bundled into a package file with the .rpm extension. The `rpm` command is used to manage these packages, allowing you to install, update, remove, and query software on your system. For example:
 - `rpm -i package.rpm`: Install a package.
 - `rpm -e package_name`: Remove a package.
-- `rpm -q package_name`: Query if a package is installed. 
+- `rpm -q package_name`: Query if a package is installed.
 
 It does not resolve dependencies automatically, so you may need to manually install any required packages before installing the main package. For example, if you try to install ansible using `rpm -i ansible.rpm` and it has dependencies like `python3` and `python3-pip`, you would need to install those dependencies first before installing ansible.
 
@@ -113,12 +113,12 @@ It does not resolve dependencies automatically, so you may need to manually inst
 - `yum remove package_name`: Remove a package.
 - `yum update package_name`: Update a package to the latest version.
 
-*How does yum find where a particular is located?* It looks into the repository configuration files located in `/etc/yum.repos.d/` directory. These files contain information about the repositories, including their URLs and the packages they contain. When you run a yum command, it checks these repositories for the requested package and its dependencies, and then downloads and installs them as needed. At times, the default set of repos may not have the software you need or may not have the latest version. So you need to configure additional repositories so yum can find those packages. Instructions to configure additional repositories are usually provided on the software vendor's website. 
+*How does yum find where a particular is located?* It looks into the repository configuration files located in `/etc/yum.repos.d/` directory. These files contain information about the repositories, including their URLs and the packages they contain. When you run a yum command, it checks these repositories for the requested package and its dependencies, and then downloads and installs them as needed. At times, the default set of repos may not have the software you need or may not have the latest version. So you need to configure additional repositories so yum can find those packages. Instructions to configure additional repositories are usually provided on the software vendor's website.
 
 - `yum repolist`: List all configured repositories and their status (enabled/disabled).
 - `ls /etc/yum.repos.d/`: List the repository configuration files in the yum.repos.d directory. Each file corresponds to a repository and contains information about its name, base URL, and other settings. By checking these files, you can see which repositories are configured on your system and where yum will look for packages when you run installation or update commands.
 - `cat /etc/yum.repos.d/<repo_file>.repo`: Display the contents of a specific repository configuration file. This file contains details about the repository, such as its name, base URL, and whether it is enabled or disabled. By examining this file, you can understand where yum will look for packages when you run installation or update commands, and you can also modify the repository settings if needed.
-- `yum list <package_name>`: Check if a specific package is available in the configured repositories. 
+- `yum list <package_name>`: Check if a specific package is available in the configured repositories.
 - `yum --showduplicates list <package_name>`: Check for all available versions of a specific package in the configured repositories. This command will show you all the versions of the package that are available for installation, allowing you to choose which version you want to install or update to.
 
 ### Services
@@ -141,11 +141,11 @@ Most modern Linux distributions use systemd to manage services. Each service is 
 Steps to configure a software as a systemd service:
 1. Create a unit file for the service. For example, if you want to create a service for a web application called "myapp", you would create a file named `myapp.service` in the `/etc/systemd/system/` directory.
 2. To add additional metadata about the service, such as a description or dependencies, you can include a `[Unit]` section in the unit file.
-3. Define a section caled `[Service]` in the unit file, where you specify the command to start the service and directive named `ExecStart` to specify the command that will be executed to start the service. If the application has other dependencies, commands or scripts to run before or after starting the main application, you can specify them using directives like `ExecStartPre` or `ExecStartPost`. If the app needs to be restarted if it crashes, you can use the `Restart` directive. 
+3. Define a section caled `[Service]` in the unit file, where you specify the command to start the service and directive named `ExecStart` to specify the command that will be executed to start the service. If the application has other dependencies, commands or scripts to run before or after starting the main application, you can specify them using directives like `ExecStartPre` or `ExecStartPost`. If the app needs to be restarted if it crashes, you can use the `Restart` directive.
 4. To configure the service to start automatically at boot time, define a section called `[Install]` in the unit file. In this section, you can specify the target that the service should be associated with using the `WantedBy` directive. For example, if you want the service to start when the system reaches the multi-user target (which is a common target for services), you would add the following lines to the unit file.
 5. After defining the `[Install]` section, you can enable the service to start at boot time using the `systemctl` command: `sudo systemctl enable myapp.service`
 6. Save the unit file and reload the systemd manager configuration to recognize the new service: `sudo systemctl daemon-reload`
-7. Start the service using the `systemctl` command: `sudo systemctl start myapp.service` 
+7. Start the service using the `systemctl` command: `sudo systemctl start myapp.service`
 8. Stop the service using the `systemctl` command: `sudo systemctl stop myapp.service`
 9. Check the status of the service: `sudo systemctl status myapp.service`
 
@@ -206,25 +206,25 @@ Vi editor has two main modes: **command mode** and **insert mode**. When you ope
 
 There are two main options for setting up labs for practicing DevOps skills: using a local laptop or using cloud-based virtual machines such as AWS, Azure, or Google Cloud Platform.
 
-We will focus on setting up labs in home environment using laptop or desktop computer. This approach allows you to have full control over your lab environment and is cost-effective since you can use your existing hardware. You can use virtualization software like VirtualBox to create and manage virtual machines on your local machine. 
+We will focus on setting up labs in home environment using laptop or desktop computer. This approach allows you to have full control over your lab environment and is cost-effective since you can use your existing hardware. You can use virtualization software like VirtualBox to create and manage virtual machines on your local machine.
 
 #### What is a home lab environment? What are the things that we can do in it?
 
 While learning devops and cloud technologies, we will come across various tools such as git for version control, Jenkins for continuous integration and deployment, Docker for containerization, Kubernetes for container orchestration, Ansible, Chef or Puppet for configuration management, programming frameworks like Python, Java or Node.js, and their dependent libraries, web servers like Apache, Nginx, tomcat servers, databases like MySQL or MongoDB, cloud management tools like AWS CLI, Azure CLI, Google Cloud SDK, differenct OS such as Ubuntu, CentOS, Red Hat, and many more. We can install all of these tools and technologies in our laptop, but it can create a mess and may lead to conflicts between different software versions, compatibility issues and performance degradation. For example, if you have a project that requires Python 3.8 but your system has Python 3.10 installed, it can cause compatibility issues.
 
-One way to avoid this is to use virtual machines (VMs) to create isolated environments for each project or tool. This way, you can have different versions of software and tools installed in separate VMs without affecting your main system. If anything wrong happens in the VM, we can simply delete it and create a new one without worrying about breaking our main system. Or take a backup of the VM using snapshots and restore it to a previous state if needed. This allows us to experiment and learn different systems in different VMs and different OS in VMs irrespective of the OS of our main system. 
+One way to avoid this is to use virtual machines (VMs) to create isolated environments for each project or tool. This way, you can have different versions of software and tools installed in separate VMs without affecting your main system. If anything wrong happens in the VM, we can simply delete it and create a new one without worrying about breaking our main system. Or take a backup of the VM using snapshots and restore it to a previous state if needed. This allows us to experiment and learn different systems in different VMs and different OS in VMs irrespective of the OS of our main system.
 
 ### Virtualization software
 
-Virtualization software / hypervisors are tools that allow you to create and manage virtual machines on your physical hardware. They provide a layer of abstraction between the physical hardware and the virtual machines, allowing you to run multiple operating systems and applications on a single physical machine. 
+Virtualization software / hypervisors are tools that allow you to create and manage virtual machines on your physical hardware. They provide a layer of abstraction between the physical hardware and the virtual machines, allowing you to run multiple operating systems and applications on a single physical machine.
 
 Types of virtualization software:
 
-1. **Type 1 Hypervisor (Bare-metal)**: This type of hypervisor runs directly on the physical hardware and manages the virtual machines. Examples include VMware ESXi, Microsoft Hyper-V, and Xen. Type 1 hypervisors are typically used in enterprise or production environments for server virtualization. They are used when we need large number of VMs, high performance, and better resource management. They require high resource requirements and they are expensive. 
+1. **Type 1 Hypervisor (Bare-metal)**: This type of hypervisor runs directly on the physical hardware and manages the virtual machines. Examples include VMware ESXi, Microsoft Hyper-V, and Xen. Type 1 hypervisors are typically used in enterprise or production environments for server virtualization. They are used when we need large number of VMs, high performance, and better resource management. They require high resource requirements and they are expensive.
 
 2. **Type 2 Hypervisor (Hosted)**: This type of hypervisor runs on top of a host operating system and manages the virtual machines. Examples include Oracle VirtualBox, VMware Workstation, and Parallels Desktop. Type 2 hypervisors are commonly used for desktop virtualization and are suitable for home labs and development environments. They are easier to set up and use, and they are more cost-effective compared to Type 1 hypervisors. However, they may have performance overhead due to running on top of a host operating system.
 
-We will be using Type 2 hypervisor, specifically Oracle VirtualBox, for our home lab environment. 
+We will be using Type 2 hypervisor, specifically Oracle VirtualBox, for our home lab environment.
 
 Comparison of Oracle VirtualBox and VMware Workstation:
 
@@ -300,7 +300,7 @@ virtualbox --help
 3. Follow the prompts to configure the virtual machine, including selecting the operating system, allocating memory, and creating a virtual hard disk. For base memory, it is recommended to allocate at least 2GB (2048 MB) for a Linux VM, but you can allocate more if your system has enough resources. I selected 1GB (1024 MB) for my VM. For hard disk, we can allocate some space for the VM to store its files and data and install the OS manually through a CD drive. OR we can use a pre-configured virtual machine image that already has the OS installed. We can find it from [osbox.org](https://www.osboxes.org/).
 4. I preferred to use a pre-configured virtual machine image for linux mint 22.1 Xia. I have downloaded the .7z file. After extracting it, I got a .vmdk file which is the virtual hard disk image. We will use this .vmdk file to create a new virtual machine in VirtualBox.
 5. When prompted for hard disk, select "Use an existing virtual hard disk file" and browse to the location of the extracted .vmdk file and select it.
-6. Before powering on, right click on the created VM and go to settings. Under "Network", select "Bridged Adapter" to allow the VM to connect to the same network as your host machine. This will enable the VM to have its own IP address and access the internet. 
+6. Before powering on, right click on the created VM and go to settings. Under "Network", select "Bridged Adapter" to allow the VM to connect to the same network as your host machine. This will enable the VM to have its own IP address and access the internet.
 7. Once the virtual machine is created, start in Normal Start.
 8. The VM will boot up and you can log in using the credentials provided by osboxes.org (username: osboxes, password: osboxes.org).
 
@@ -308,7 +308,7 @@ virtualbox --help
 
 ### Virtual Box Connectivity
 
-In this section, we will learn about 
+In this section, we will learn about
 - How to connect and ssh into a vm
 - why can't i access the server on my vm
 - what's port mapping?
@@ -316,7 +316,7 @@ In this section, we will learn about
 When a vm is downloaded and installed, we can start the vm using:
 1. **Normal start**: It gives a console to the vm. we can see the ui and if the image has a GUI, we can see and use it. In DevOps world, it's better to work with CLI access instead of GUI. If the console is closed, the vm must be shut down or suspended.
 
-2. **Headless start**: In this mode, the vm starts but the console windows will not be opened. The vm can only be accessed using ssh or remote desktop tools. 
+2. **Headless start**: In this mode, the vm starts but the console windows will not be opened. The vm can only be accessed using ssh or remote desktop tools.
 
 3. **Detachable start**: Starts the vm in normal mode, but closing the console does not shut down the vm. In addition to normal mode, the vm has the option to run in the background.
 
@@ -338,7 +338,7 @@ There are two approaches of networking when deploying vms:
 1. Bridged adapter : the vm becomes part of the external network and it gets an ip address assigned to it you can simply ssh to it as you would ssh to another system in your network.
 Eg: `ssh username@ip_address -p port_number`
 2. NAT : it doesn't connect to the external network and so does not get an ip address on the external network that we can use ssh
-to. If you had multiple vms you will see that all vms configured with nat are isolated and they all get the same ip address assigned and they cannot reach each other however with network address translation they can reach the external world so you should have internet connectivity if your host has internet connectivity you can verify that by trying to ping an external website. To ssh into the guest, first verify using `service sshd status` to see the service is running. Now, we need to set up port forwarding. In the Oracle Virtual Box, settings of the vm created --> Network --> Advanced; Port forwarding --> Add a new rule. The default port for SSH is port 22. The ssh service listens on port 22 on the vm but we also have an ssh service on our host that uses port 22. so we cannot forward 22 on our host to the vm so we will configure another port say port 2222 on the host to forward to port 22 on the vm so we add a rule for that and we name it ssh port. Now we can ssh into the vm using the forwarded port 
+to. If you had multiple vms you will see that all vms configured with nat are isolated and they all get the same ip address assigned and they cannot reach each other however with network address translation they can reach the external world so you should have internet connectivity if your host has internet connectivity you can verify that by trying to ping an external website. To ssh into the guest, first verify using `service sshd status` to see the service is running. Now, we need to set up port forwarding. In the Oracle Virtual Box, settings of the vm created --> Network --> Advanced; Port forwarding --> Add a new rule. The default port for SSH is port 22. The ssh service listens on port 22 on the vm but we also have an ssh service on our host that uses port 22. so we cannot forward 22 on our host to the vm so we will configure another port say port 2222 on the host to forward to port 22 on the vm so we add a rule for that and we name it ssh port. Now we can ssh into the vm using the forwarded port
 
 Q: How to check and set ip addresses?
 
@@ -356,7 +356,7 @@ In this section we will discuss,
 
 - Understand various types of networking - NAT, bridged, host only and what do they mean and when to use what type of network
 - how multiple vms connect each other
-- how to troubleshoot issues where you can't reach the internet 
+- how to troubleshoot issues where you can't reach the internet
 
 #### A Computer Can Have More Than One Door to the Network
 
@@ -418,7 +418,7 @@ state DOWN
 NO-CARRIER
 ```
 
-This is my **wired Ethernet adapter**. 
+This is my **wired Ethernet adapter**.
 It exists, but no cable is plugged in.
 
 Imagine a door in your house that exists but is closed — nobody can enter through it.
@@ -730,3 +730,55 @@ Make your laptop act like a router.
 - Adapter 2 → NAT (internet)
 
 This is the most common real-world setup.
+
+---
+
+# 6. Port Forwarding (Access VM Services from Outside)
+
+## 🧩 Concept
+
+Port forwarding is like:
+
+> “If someone knocks on this door (port), send them to this VM service.”
+
+---
+
+## 🌐 Example
+
+You have:
+- VM running web server on port `80`
+- VM is behind NAT (not directly reachable)
+
+You configure:
+
+
+Host Port 8080 → VM Port 80
+
+
+Now:
+
+
+http://localhost:8080
+→ forwarded to VM:80
+
+
+---
+
+## 🔐 SSH Example
+
+
+Host Port 2222 → VM Port 22
+
+
+Then you can SSH:
+
+```bash
+ssh user@localhost -p 2222
+```
+
+Even without knowing VM IP.
+
+## 🔥 Use Case
+- Accessing web apps inside NAT VM
+- Debugging microservices
+- Running multiple VMs with different exposed ports
