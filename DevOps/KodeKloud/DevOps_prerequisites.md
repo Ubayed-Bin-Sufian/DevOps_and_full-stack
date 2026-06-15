@@ -782,3 +782,104 @@ Even without knowing VM IP.
 - Accessing web apps inside NAT VM
 - Debugging microservices
 - Running multiple VMs with different exposed ports
+
+## Introduction to Vagrant
+
+In the previous sections, we learned how to create and configure virtual machines manually using VirtualBox. The typical process involved:
+
+* Downloading an operating system image from a website such as OSBoxes.
+* Creating a new virtual machine.
+* Configuring networking (Host-Only, NAT, Bridged, etc.).
+* Setting up port forwarding rules.
+* Booting the virtual machine.
+* Repeating the same steps for every additional VM.
+
+While this approach works, it quickly becomes repetitive and time-consuming when working with multiple virtual machines.
+
+### What is Vagrant?
+
+Vagrant is an open-source tool that automates the creation and management of virtual machine environments. Instead of manually performing all the setup tasks, Vagrant allows you to define your infrastructure as code and provision virtual machines with a single command.
+
+With Vagrant, you can:
+
+* Automatically download operating system images.
+* Create and configure virtual machines.
+* Configure networking and port forwarding.
+* Provision software and dependencies.
+* Recreate identical environments across different machines.
+
+This makes Vagrant particularly useful for DevOps engineers, developers, and anyone working with multi-VM lab environments.
+
+### Installing Vagrant
+
+To get started, download and install Vagrant from the official website:
+
+https://developer.hashicorp.com/vagrant
+
+Choose the version that matches your operating system and complete the installation process.
+
+### Understanding Vagrant Boxes
+
+The first step in creating a Vagrant environment is selecting a **box**.
+
+A **Vagrant Box** is a packaged virtual machine image that contains:
+
+* A preconfigured operating system.
+* Metadata required by Vagrant.
+* Configuration scripts and settings needed to create the environment.
+
+You can browse publicly available boxes on [Vagrant Cloud](https://portal.cloud.hashicorp.com/vagrant/discover) and choose one that matches your requirements.
+
+For example, to initialize a CentOS 7 environment:
+
+```bash
+vagrant init centos/7
+```
+
+This command creates a file named `Vagrantfile` in the current directory.
+
+### The Vagrantfile
+
+The `Vagrantfile` is the heart of a Vagrant environment. It contains configuration instructions that define how the virtual machine should be created and customized.
+
+Using the `Vagrantfile`, you can configure:
+
+* VM resources (CPU and memory)
+* Networking settings
+* Port forwarding
+* Shared folders
+* Provisioning scripts
+
+We will explore these configurations in more detail later.
+
+### Starting a Virtual Machine
+
+Once the environment has been initialized, start the virtual machine with:
+
+```bash
+vagrant up
+```
+
+When executed, Vagrant automatically:
+
+1. Downloads the required box if it is not already available locally.
+2. Creates the virtual machine using the selected provider (such as VirtualBox).
+3. Applies networking and port-forwarding configurations.
+4. Boots the virtual machine.
+5. Waits until the machine is ready for use.
+
+All of these steps are completed through a single command, significantly reducing the manual effort required to create and manage virtual machines.
+
+### Why Use Vagrant?
+
+Vagrant shines when working with complex environments that contain multiple virtual machines. Instead of manually configuring each VM, you can describe the entire setup in code and reproduce it whenever needed.
+
+Benefits of Vagrant include:
+
+* Consistent development environments.
+* Faster environment setup.
+* Infrastructure as Code (IaC) practices.
+* Easy sharing of environments among team members.
+* Simplified management of multi-VM labs.
+
+For anyone learning DevOps, Vagrant provides an excellent way to build reproducible local infrastructure without repeatedly performing manual VirtualBox configurations.
