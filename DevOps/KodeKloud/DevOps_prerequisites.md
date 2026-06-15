@@ -883,3 +883,141 @@ Benefits of Vagrant include:
 * Simplified management of multi-VM labs.
 
 For anyone learning DevOps, Vagrant provides an excellent way to build reproducible local infrastructure without repeatedly performing manual VirtualBox configurations.
+
+## Common Vagrant Commands
+
+Once Vagrant is installed, you can view all available commands by running:
+
+```bash
+vagrant
+```
+
+This displays a list of commands that help you create, manage, and interact with your virtual machines.
+
+### Managing Vagrant Boxes
+
+To manage installed Vagrant boxes, use:
+
+```bash
+vagrant box
+```
+
+This command provides subcommands for tasks such as listing, adding, updating, and removing boxes from your local system.
+
+### Initializing and Starting a VM
+
+To create a new Vagrant environment:
+
+```bash
+vagrant init <box-name>
+```
+
+For example:
+
+```bash
+vagrant init centos/7
+```
+
+To create and start the virtual machine:
+
+```bash
+vagrant up
+```
+
+This command downloads the box (if necessary), creates the VM, applies the configuration from the `Vagrantfile`, and starts the machine.
+
+### Suspending and Resuming a VM
+
+If you want to temporarily pause a virtual machine without shutting it down completely, use:
+
+```bash
+vagrant suspend
+```
+
+To continue from where the machine was suspended:
+
+```bash
+vagrant resume
+```
+
+This is similar to putting a laptop into sleep mode and waking it up later.
+
+### Stopping a VM
+
+To gracefully shut down a running virtual machine:
+
+```bash
+vagrant halt
+```
+
+The VM remains available on disk and can be started again using `vagrant up`.
+
+### Destroying a VM
+
+To stop and permanently remove a virtual machine:
+
+```bash
+vagrant destroy
+```
+
+This command deletes the VM created by Vagrant but does not remove the box image itself.
+
+> **Note:** Any data stored inside the VM that is not backed up elsewhere will be lost.
+
+### Checking VM Status
+
+To check the current state of a Vagrant-managed machine:
+
+```bash
+vagrant status
+```
+
+This command shows whether the VM is running, stopped, suspended, or not yet created.
+
+### Reloading Configuration Changes
+
+After making changes to the `Vagrantfile`, apply the updated configuration using:
+
+```bash
+vagrant reload
+```
+
+This restarts the VM and reloads the new settings.
+
+### Working with Snapshots
+
+Vagrant also supports snapshots, allowing you to save and restore the state of a virtual machine.
+
+Create a snapshot:
+
+```bash
+vagrant snapshot save <snapshot-name>
+```
+
+Restore a snapshot:
+
+```bash
+vagrant snapshot restore <snapshot-name>
+```
+
+Snapshots are useful when experimenting with software installations or system configurations, as they allow you to quickly revert to a known working state.
+
+### Connecting to a VM via SSH
+
+One of the most convenient Vagrant features is simplified SSH access.
+
+To connect to a running VM:
+
+```bash
+vagrant ssh
+```
+
+Vagrant automatically:
+
+* Detects the correct SSH port.
+* Uses the appropriate SSH configuration.
+* Handles SSH key-based authentication.
+
+As a result, you can access the virtual machine without manually remembering IP addresses, ports, usernames, or SSH keys.
+
+This greatly simplifies working with development and testing environments.
